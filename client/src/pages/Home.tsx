@@ -20,14 +20,14 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">
-              <span className="text-foreground">Hello, I'm</span>
+              <span className="text-foreground">Hello, I'm Hamid Bong Brahim</span>
               <br />
               <GlitchText text="CyberStudent" className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary" />
             </h1>
             
             <div className="h-20 text-xl md:text-2xl text-muted-foreground font-mono">
               <span className="terminal-cursor">
-                DevSecOps Engineer | Security Researcher
+                DevSecOps Engineer Junior | Network Security
               </span>
             </div>
           </motion.div>
@@ -38,9 +38,9 @@ export default function Home() {
             transition={{ delay: 0.3 }}
             className="text-lg text-muted-foreground max-w-lg leading-relaxed"
           >
-            Specializing in securing cloud infrastructure, automating deployment pipelines, 
-            and building resilient systems. Passionate about the intersection of 
-            development and security.
+            DevSecOps Engineer passionate about security, cloud technologies, and automation.
+            I support teams in securely deploying both microservices-based and monolithic applications,
+            industrializing CI/CD pipelines, and implementing resilient Kubernetes-based architectures.
           </motion.p>
 
           <motion.div 
