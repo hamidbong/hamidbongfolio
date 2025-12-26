@@ -1,61 +1,105 @@
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { api, type InsertMessage } from "@shared/routes";
+import { useMemo } from "react";
 
-// Projects
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  techStack: string[];
+  repoUrl?: string;
+  demoUrl?: string;
+  imageUrl?: string;
+  featured?: boolean;
+}
+
+export interface Skill {
+  id: number;
+  name: string;
+  category: string;
+  proficiency: number;
+  icon: string;
+}
+
+export interface Experience {
+  id: number;
+  role: string;
+  company: string;
+  duration: string;
+  description: string;
+}
+
+const MOCK_PROJECTS: Project[] = [
+  {
+    id: 1,
+    title: "Secure Kubernetes Cluster",
+    description: "Automated deployment of a hardened Kubernetes cluster using Ansible and Terraform. Implemented network policies and RBAC.",
+    techStack: ["Kubernetes", "Terraform", "Ansible", "AWS"],
+    repoUrl: "https://github.com/example/k8s-hardened",
+    featured: true
+  },
+  {
+    id: 2,
+    title: "Vulnerability Scanner",
+    description: "A Python-based automated vulnerability scanner for internal networks. Generates reports on open ports and outdated services.",
+    techStack: ["Python", "Nmap", "Security"],
+    repoUrl: "https://github.com/example/vuln-scanner",
+    featured: true
+  },
+  {
+    id: 3,
+    title: "DevSecOps Pipeline Demo",
+    description: "Complete CI/CD pipeline with integrated SAST/DAST security checks using SonarQube and OWASP ZAP.",
+    techStack: ["GitHub Actions", "SonarQube", "OWASP ZAP", "Docker"],
+    repoUrl: "https://github.com/example/devsecops-pipeline",
+    featured: true
+  }
+];
+
+const MOCK_SKILLS: Skill[] = [
+  { id: 1, name: "Kubernetes", category: "DevOps", proficiency: 85, icon: "Container" },
+  { id: 2, name: "Docker", category: "DevOps", proficiency: 90, icon: "Box" },
+  { id: 3, name: "CI/CD (GitHub Actions)", category: "DevOps", proficiency: 90, icon: "Workflow" },
+  { id: 4, name: "Penetration Testing", category: "Security", proficiency: 75, icon: "Shield" },
+  { id: 5, name: "Network Security", category: "Security", proficiency: 80, icon: "Lock" },
+  { id: 6, name: "Node.js", category: "Backend", proficiency: 70, icon: "Server" },
+  { id: 7, name: "Python", category: "Backend", proficiency: 85, icon: "Code" },
+  { id: 8, name: "Terraform", category: "DevOps", proficiency: 70, icon: "Cloud" },
+];
+
+const MOCK_EXPERIENCE: Experience[] = [
+  {
+    id: 1,
+    role: "Security Intern",
+    company: "CyberCorp Inc.",
+    duration: "2024 - Present",
+    description: "Assisting in penetration testing, monitoring SIEM logs, and automating threat detection scripts."
+  },
+  {
+    id: 2,
+    role: "DevOps Student",
+    company: "University Lab",
+    duration: "2022 - 2024",
+    description: "Managed campus linux servers, set up automated backup solutions, and taught workshops on Git and Docker."
+  }
+];
+
 export function useProjects() {
-  return useQuery({
-    queryKey: [api.projects.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.projects.list.path);
-      if (!res.ok) throw new Error("Failed to fetch projects");
-      return api.projects.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: MOCK_PROJECTS, isLoading: false };
 }
 
-// Skills
 export function useSkills() {
-  return useQuery({
-    queryKey: [api.skills.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.skills.list.path);
-      if (!res.ok) throw new Error("Failed to fetch skills");
-      return api.skills.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: MOCK_SKILLS, isLoading: false };
 }
 
-// Experience
 export function useExperience() {
-  return useQuery({
-    queryKey: [api.experience.list.path],
-    queryFn: async () => {
-      const res = await fetch(api.experience.list.path);
-      if (!res.ok) throw new Error("Failed to fetch experience");
-      return api.experience.list.responses[200].parse(await res.json());
-    },
-  });
+  return { data: MOCK_EXPERIENCE, isLoading: false };
 }
 
-// Contact
 export function useSendMessage() {
-  return useMutation({
-    mutationFn: async (data: InsertMessage) => {
-      const res = await fetch(api.contact.submit.path, {
-        method: api.contact.submit.method,
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      
-      if (!res.ok) {
-        if (res.status === 400) {
-          const error = api.contact.submit.responses[400].parse(await res.json());
-          throw new Error(error.message);
-        }
-        throw new Error("Failed to send message");
-      }
-      
-      return api.contact.submit.responses[201].parse(await res.json());
+  return {
+    mutateAsync: async (data: any) => {
+      console.log("Mock message sent:", data);
+      return { success: true };
     },
-  });
+    isPending: false
+  };
 }
