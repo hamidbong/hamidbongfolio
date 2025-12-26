@@ -1,12 +1,19 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertMessageSchema } from "@shared/schema";
-import { type InsertMessage } from "@shared/routes";
+import { z } from "zod";
 import { useSendMessage } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
 import { motion } from "framer-motion";
 import { Mail, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+
+const insertMessageSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters")
+});
+
+type InsertMessage = z.infer<typeof insertMessageSchema>;
 
 export default function Contact() {
   const { toast } = useToast();

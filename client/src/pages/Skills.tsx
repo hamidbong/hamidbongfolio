@@ -1,4 +1,4 @@
-import { useSkills, useExperience } from "@/hooks/use-portfolio";
+import { useSkills, useExperience, type Skill } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
 import { motion } from "framer-motion";
 import { Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu } from "lucide-react";
@@ -18,7 +18,7 @@ export default function Skills() {
     if (!acc[skill.category]) acc[skill.category] = [];
     acc[skill.category].push(skill);
     return acc;
-  }, {} as Record<string, typeof skills>);
+  }, {} as Record<string, Skill[]>);
 
   return (
     <div className="min-h-screen pt-24 pb-32 px-4 max-w-5xl mx-auto">
