@@ -77,13 +77,15 @@ const MOCK_SKILLS: Skill[] = [
   { id: 3, name: "CI/CD (Jenkins)", category: "DevOps", proficiency: 90, icon: "Workflow" },
   { id: 4, name: "Penetration Testing", category: "Security", proficiency: 75, icon: "Shield" },
   { id: 5, name: "Network Security", category: "Security", proficiency: 80, icon: "Lock" },
-  { id: 6, name: "SonarQube & OWASP Check & Trivy", category: "DevSecOps", proficiency: 70, icon: "Lock" },
-  { id: 7, name: "Python", category: "Backend", proficiency: 85, icon: "Code" },
-  { id: 8, name: "Terraform", category: "DevOps", proficiency: 70, icon: "Cloud" },
-  { id: 9, name: "Ansible", category: "DevOps", proficiency: 75, icon: "Settings" },
-  { id: 10, name: "Linux", category: "System", proficiency: 85, icon: "Server" },
-  { id: 11, name: "Git", category: "DevOps", proficiency: 90, icon: "GitBranch" },
-  { id: 12, name: "OpenStack", category: "DevOps", proficiency: 70, icon: "Cloud" }
+  { id: 6, name: "SonarQube", category: "DevSecOps", proficiency: 70, icon: "Lock" },
+  { id: 7, name: "OWASP Check", category: "DevSecOps", proficiency: 70, icon: "Lock" },
+  { id: 8, name: "Trivy", category: "DevSecOps", proficiency: 70, icon: "Lock" },
+  { id: 9, name: "Python", category: "Backend", proficiency: 85, icon: "Code" },
+  { id: 10, name: "Terraform", category: "DevOps", proficiency: 70, icon: "Cloud" },
+  { id: 11, name: "Ansible", category: "DevOps", proficiency: 75, icon: "Settings" },
+  { id: 12, name: "Linux", category: "System", proficiency: 85, icon: "Server" },
+  { id: 13, name: "Git", category: "DevOps", proficiency: 90, icon: "GitBranch" },
+  { id: 14, name: "OpenStack", category: "Cloud", proficiency: 70, icon: "Cloud" }
 
 ];
 
