@@ -93,17 +93,17 @@ const MOCK_EXPERIENCE: Experience[] = [
 const MOCK_EDUCATION: Education[] = [
   {
     id: 1,
-    degree: "Master en Sécurité Informatique",
-    school: "École Supérieure d'Informatique",
-    duration: "2024 - 2026",
-    description: "Spécialisation en DevSecOps, cryptographie appliquée et sécurité des infrastructures cloud."
+    degree: "Mastère professionnel en Sécurité des Systèmes Informatiques",
+    school: "Institut Supérieur d'Informatique et de Multimédia de Gabès",
+    duration: "2023 - 2025",
+    description: "Spécialisation en DevSecOps."
   },
   {
     id: 2,
-    degree: "Licence en Informatique",
-    school: "Université de Technologie",
-    duration: "2021 - 2024",
-    description: "Bases de l'informatique, administration systèmes Linux et réseaux."
+    degree: "Licence en Technologie d'Informatique",
+    school: "Institut Supérieur des Etudes Technologiques de Nabeul",
+    duration: "2020 - 2023",
+    description: "Specialisation en Reseaux et Services Informatiques."
   }
 ];
 

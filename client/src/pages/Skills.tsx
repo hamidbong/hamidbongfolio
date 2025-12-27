@@ -156,9 +156,11 @@ export default function Skills() {
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
             Téléchargez mon CV complet pour découvrir l'intégralité de mon parcours et mes compétences techniques.
           </p>
-          <Button size="lg" className="gap-2 group">
-            <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-            Télécharger mon CV (PDF)
+          <Button asChild size="lg" className="gap-2 group">
+            <a href="/cv.pdf" download>
+              <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+              Télécharger mon CV (PDF)
+            </a>
           </Button>
         </motion.div>
       </div>
