@@ -1,7 +1,8 @@
-import { useSkills, useExperience, type Skill } from "@/hooks/use-portfolio";
+import { useSkills, useExperience, useEducation, type Skill } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
 import { motion } from "framer-motion";
-import { Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu } from "lucide-react";
+import { Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu, GraduationCap, Download } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const icons: Record<string, any> = {
   Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu
@@ -10,8 +11,9 @@ const icons: Record<string, any> = {
 export default function Skills() {
   const { data: skills, isLoading: skillsLoading } = useSkills();
   const { data: experience, isLoading: expLoading } = useExperience();
+  const { data: education, isLoading: eduLoading } = useEducation();
 
-  if (skillsLoading || expLoading) return null;
+  if (skillsLoading || expLoading || eduLoading) return null;
 
   // Group skills by category
   const groupedSkills = skills?.reduce((acc, skill) => {
@@ -110,6 +112,55 @@ export default function Skills() {
             </motion.div>
           ))}
         </div>
+      </div>
+
+      <div className="mb-20">
+        <motion.h2 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-3xl font-bold mb-8 font-mono"
+        >
+          <span className="text-secondary">&gt;</span> ./education_history
+        </motion.h2>
+        
+        <div className="grid gap-6">
+          {education?.map((edu, idx) => (
+            <TerminalCard 
+              key={edu.id}
+              title={`~/edu/${edu.degree.toLowerCase().replace(/\s+/g, '-')}`}
+              delay={idx * 0.1}
+            >
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-3 mb-2">
+                    <GraduationCap className="w-5 h-5 text-primary" />
+                    <h3 className="text-xl font-bold text-foreground">{edu.degree}</h3>
+                  </div>
+                  <p className="text-primary font-medium mb-1">{edu.school}</p>
+                  <p className="text-sm text-muted-foreground font-mono mb-4">{edu.duration}</p>
+                  <p className="text-muted-foreground text-sm max-w-2xl">{edu.description}</p>
+                </div>
+              </div>
+            </TerminalCard>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col items-center justify-center p-12 bg-primary/5 rounded-2xl border border-primary/20 border-dashed">
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          className="text-center"
+        >
+          <h2 className="text-2xl font-bold mb-4 font-mono">Prêt pour une collaboration ?</h2>
+          <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+            Téléchargez mon CV complet pour découvrir l'intégralité de mon parcours et mes compétences techniques.
+          </p>
+          <Button size="lg" className="gap-2 group">
+            <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+            Télécharger mon CV (PDF)
+          </Button>
+        </motion.div>
       </div>
     </div>
   );
