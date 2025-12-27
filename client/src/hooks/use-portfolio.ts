@@ -125,9 +125,11 @@ export function useEducation() {
 
 export function useSendMessage() {
   return {
-    mutateAsync: async (data: any) => {
+    mutate: (data: any, options: { onSuccess?: () => void; onError?: (error: any) => void }) => {
       console.log("Mock message sent:", data);
-      return { success: true };
+      setTimeout(() => {
+        if (options.onSuccess) options.onSuccess();
+      }, 1000); // Simulate async
     },
     isPending: false
   };
