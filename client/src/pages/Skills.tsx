@@ -157,7 +157,7 @@ export default function Skills() {
             Téléchargez mon CV complet pour découvrir l'intégralité de mon parcours et mes compétences techniques.
           </p>
           <Button asChild size="lg" className="gap-2 group">
-            <a href="/cv.pdf" download>
+            <a href="/CV_BrahimHamidBong.pdf" download>
               <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
               Télécharger mon CV (PDF)
             </a>
