@@ -17,9 +17,9 @@ const insertMessageSchema = z.object({
 type InsertMessage = z.infer<typeof insertMessageSchema>;
 
 const SOCIAL_LINKS = [
-  { icon: Github, label: "GitHub", href: "https://github.com", color: "hover:text-white" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com", color: "hover:text-[#0A66C2]" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com", color: "hover:text-[#1DA1F2]" },
+  { icon: Github, label: "GitHub", href: "https://github.com/hamidbong", color: "hover:text-white" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/hamid-bong-brahim", color: "hover:text-[#0A66C2]" },
+  { icon: Twitter, label: "Twitter", href: "https://x.com/HamidBong", color: "hover:text-[#1DA1F2]" },
 ];
 
 
@@ -117,7 +117,7 @@ export default function Contact() {
               <span className="text-green-500">SYSTEMS_ONLINE</span>
             </div>
             <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
-              Accepting new security audits and DevOps missions. Current availability: <span className="text-foreground">2 slots open</span>.
+              Accepting new security challenges and DevOps missions. Current availability: <span className="text-foreground">Currently available</span>.
             </p>
           </TerminalCard>
         </div>
