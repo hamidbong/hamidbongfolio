@@ -156,12 +156,14 @@ export default function Skills() {
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
             Téléchargez mon CV complet pour découvrir l'intégralité de mon parcours et mes compétences techniques.
           </p>
-          <Button asChild size="lg" className="gap-2 group">
-            <a href="/CVBrahimHamidBong.pdf" download>
-              <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-              Télécharger mon CV (PDF)
-            </a>
-          </Button>
+          <a 
+            href="/CVBrahimHamidBong.pdf" 
+            download 
+            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-10 rounded-md px-8 group"
+          >
+            <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+            Télécharger mon CV (PDF)
+          </a>
         </motion.div>
       </div>
     </div>
