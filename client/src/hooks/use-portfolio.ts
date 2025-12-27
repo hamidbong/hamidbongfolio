@@ -137,12 +137,14 @@ export function useSendMessage() {
     import('@emailjs/browser').then(({ default: emailjs }) => {
       emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
+      console.log("Sending email with data:", data);
+
       emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          from_name: data.name,
-          from_email: data.email,
+          name: data.name,
+          email: data.email,
           message: data.message,
           to_email: import.meta.env.VITE_RECIPIENT_EMAIL,
         }
