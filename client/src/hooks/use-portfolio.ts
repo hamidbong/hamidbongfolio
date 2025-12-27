@@ -123,14 +123,48 @@ export function useEducation() {
   return { data: MOCK_EDUCATION, isLoading: false };
 }
 
+import { useState } from "react";
+
 export function useSendMessage() {
-  return {
-    mutate: (data: any, options: { onSuccess?: () => void; onError?: (error: any) => void }) => {
-      console.log("Mock message sent:", data);
-      setTimeout(() => {
+  const [isPending, setIsPending] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const mutate = (data: any, options: { onSuccess?: () => void; onError?: (error: any) => void }) => {
+    setIsPending(true);
+    setIsSuccess(false);
+
+    // Import EmailJS dynamically to avoid SSR issues
+    import('@emailjs/browser').then(({ default: emailjs }) => {
+      emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+
+      emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          message: data.message,
+          to_email: import.meta.env.VITE_RECIPIENT_EMAIL,
+        }
+      ).then(() => {
+        setIsPending(false);
+        setIsSuccess(true);
         if (options.onSuccess) options.onSuccess();
-      }, 1000); // Simulate async
-    },
-    isPending: false
+      }).catch((error) => {
+        setIsPending(false);
+        setIsSuccess(false);
+        if (options.onError) options.onError(error);
+      });
+    }).catch((error) => {
+      setIsPending(false);
+      setIsSuccess(false);
+      if (options.onError) options.onError(error);
+    });
+  };
+
+  return {
+    mutate,
+    isPending,
+    isSuccess
   };
 }
