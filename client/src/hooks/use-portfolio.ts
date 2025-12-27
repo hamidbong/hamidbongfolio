@@ -59,18 +59,32 @@ const MOCK_PROJECTS: Project[] = [
     techStack: ["GitHub Actions", "SonarQube", "OWASP ZAP", "Docker"],
     repoUrl: "https://github.com/example/devsecops-pipeline",
     featured: true
+  },
+  {
+    id: 4,
+    title: "Déploiement d'Application Web Hautement Disponible avec Ansible et NGINX",
+    description: "Automatisation du déploiement d'une application web avec Ansible, NGINX et Bind9 pour une architecture hautement disponible",
+    techStack: ["Ansible", "NGINX", "Bind9", "Linux"],
+    repoUrl: "https://github.com/hamidbong/ansible-loadbalancer.git",
+    featured: true
   }
+
 ];
 
 const MOCK_SKILLS: Skill[] = [
   { id: 1, name: "Kubernetes", category: "DevOps", proficiency: 85, icon: "Container" },
   { id: 2, name: "Docker", category: "DevOps", proficiency: 90, icon: "Box" },
-  { id: 3, name: "CI/CD (GitHub Actions)", category: "DevOps", proficiency: 90, icon: "Workflow" },
+  { id: 3, name: "CI/CD (Jenkins)", category: "DevOps", proficiency: 90, icon: "Workflow" },
   { id: 4, name: "Penetration Testing", category: "Security", proficiency: 75, icon: "Shield" },
   { id: 5, name: "Network Security", category: "Security", proficiency: 80, icon: "Lock" },
-  { id: 6, name: "Node.js", category: "Backend", proficiency: 70, icon: "Server" },
+  { id: 6, name: "SonarQube & OWASP Check & Trivy", category: "DevSecOps", proficiency: 70, icon: "Lock" },
   { id: 7, name: "Python", category: "Backend", proficiency: 85, icon: "Code" },
   { id: 8, name: "Terraform", category: "DevOps", proficiency: 70, icon: "Cloud" },
+  { id: 9, name: "Ansible", category: "DevOps", proficiency: 75, icon: "Settings" },
+  { id: 10, name: "Linux", category: "System", proficiency: 85, icon: "Server" },
+  { id: 11, name: "Git", category: "DevOps", proficiency: 90, icon: "GitBranch" },
+  { id: 12, name: "OpenStack", category: "DevOps", proficiency: 70, icon: "Cloud" }
+
 ];
 
 const MOCK_EXPERIENCE: Experience[] = [
