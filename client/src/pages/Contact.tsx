@@ -117,7 +117,7 @@ export default function Contact() {
               <span className="text-green-500">SYSTEMS_ONLINE</span>
             </div>
             <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
-              Accepting new security challenges and DevOps missions. Current availability: <span className="text-foreground">Currently available</span>.
+              Accepting new security challenges and DevOps missions. <span className="text-foreground">Currently available</span>.
             </p>
           </TerminalCard>
         </div>
