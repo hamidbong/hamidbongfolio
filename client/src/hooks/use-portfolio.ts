@@ -102,28 +102,14 @@ const MOCK_EXPERIENCE: Experience[] = [
     role: "DevSecOps Intern",
     company: "University Lab",
     duration: "2024 - 2025",
-    description: "Master’s thesis project focused on the design and implementation of an automated and secure CI/CD pipeline for a microservices-based application deployed on an OpenStack cloud infrastructure. Implemented containerization with Docker and orchestration with Kubernetes, along with infrastructure provisioning and configuration using Terraform and Ansible to ensure reproducibility and consistency. Adopted a DevSecOps approach by integrating security scanning and automated testing into the CI/CD pipeline to detect vulnerabilities in source code, dependencies, and container images. Secured microservices exposure using NGINX with SSL/TLS, WAF, and rate-limiting, and implemented monitoring with Prometheus and Grafana to ensure cluster health and service availability."
+    description: "Master’s thesis project (Automated Deployment and Secure CI/CD for a Microservices Application) focused on the design and implementation of an automated and secure CI/CD pipeline for a microservices-based application deployed on an OpenStack cloud infrastructure. Implemented containerization with Docker and orchestration with Kubernetes, along with infrastructure provisioning and configuration using Terraform and Ansible to ensure reproducibility and consistency. Adopted a DevSecOps approach by integrating security scanning and automated testing into the CI/CD pipeline to detect vulnerabilities in source code, dependencies, and container images. Secured microservices exposure using NGINX with SSL/TLS, WAF, and rate-limiting, and implemented monitoring with Prometheus and Grafana to ensure cluster health and service availability."
   },
   {
     id: 3,
-    role: "DevSecOps Intern",
-    company: "University Lab",
-    duration: "2024 - 2025",
-    description: "Designed and implemented a secure CI/CD pipeline for a microservices application deployed on OpenStack, using Docker, Kubernetes, Terraform, and Ansible. Applied DevSecOps practices by integrating security scanning, automated testing, secure service exposure with NGINX (SSL/TLS, WAF), and infrastructure monitoring with Prometheus and Grafana."
-  },
-  {
-    id: 4,
     role: "Cloud Security Intern",
     company: "Solutec Nabeul",
     duration: "02/2022 - 05/2023",
-    description: "Bachelor’s end-of-study project focused on the design and implementation of a secure private cloud infrastructure. Built a multi-layered defense system including host and network intrusion detection using Wazuh and Suricata, packet filtering through firewall rules, and real-time monitoring with Prometheus and Grafana. Implemented automated detection, alerting, and blocking of attacks such as network scans, brute-force attempts, SQL injections, and DDoS attacks, validated through controlled attack testing. This project followed a DevSecOps approach, ensuring security, resilience, and visibility of the private cloud environment."
-  },
-  {
-    id: 5,
-    role: "Cloud Security Intern",
-    company: "Solutec Nabeul",
-    duration: "02/2022 - 05/2023",
-    description: "Designed and implemented a secure private cloud defense system using Wazuh, Suricata, firewall rules, and real-time monitoring with Prometheus and Grafana. Applied DevSecOps practices to detect, alert, and block network and application attacks, validated through controlled security testing."
+    description: "Bachelor’s end-of-study project (Implementation of a private Cloud solution in a secure environment) focused on the design and implementation of a secure private cloud infrastructure. Built a multi-layered defense system including host and network intrusion detection using Wazuh and Suricata, packet filtering through firewall rules, and real-time monitoring with Prometheus and Grafana. Implemented automated detection, alerting, and blocking of attacks such as network scans, brute-force attempts, SQL injections, and DDoS attacks, validated through controlled attack testing. This project followed a DevSecOps approach, ensuring security, resilience, and visibility of the private cloud environment."
   }
 
 ];
