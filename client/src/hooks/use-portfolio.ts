@@ -91,21 +91,28 @@ const MOCK_SKILLS: Skill[] = [
 
 const MOCK_EXPERIENCE: Experience[] = [
   {
-    id: 1,
+    id: 4,
     role: "Security Intern",
     company: "CyberCorp Inc.",
     duration: "2024 - Present",
     description: "Assisting in penetration testing, monitoring SIEM logs, and automating threat detection scripts."
   },
   {
-    id: 2,
+    id: 3,
+    role: "Development internship",
+    company: "Solutec Nabeul",
+    duration: "01/2023 - 02/2023",
+    description: "Implementation of a log management solution (ELK Stack) for the company"
+  },
+  {
+    id: 1,
     role: "DevSecOps Intern",
     company: "University Lab",
     duration: "2024 - 2025",
     description: "Master’s thesis project (Automated Deployment and Secure CI/CD for a Microservices Application) focused on the design and implementation of an automated and secure CI/CD pipeline for a microservices-based application deployed on an OpenStack cloud infrastructure. Implemented containerization with Docker and orchestration with Kubernetes, along with infrastructure provisioning and configuration using Terraform and Ansible to ensure reproducibility and consistency. Adopted a DevSecOps approach by integrating security scanning and automated testing into the CI/CD pipeline to detect vulnerabilities in source code, dependencies, and container images. Secured microservices exposure using NGINX with SSL/TLS, WAF, and rate-limiting, and implemented monitoring with Prometheus and Grafana to ensure cluster health and service availability."
   },
   {
-    id: 3,
+    id: 2,
     role: "Cloud Security Intern",
     company: "Solutec Nabeul",
     duration: "02/2022 - 05/2023",
