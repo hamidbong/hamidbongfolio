@@ -99,10 +99,17 @@ const MOCK_EXPERIENCE: Experience[] = [
   },
   {
     id: 2,
-    role: "DevOps Student",
+    role: "DevSecOps Intern",
     company: "University Lab",
-    duration: "2022 - 2024",
-    description: "Managed campus linux servers, set up automated backup solutions, and taught workshops on Git and Docker."
+    duration: "2024 - 2025",
+    description: "This thesis focuses on the implementation of an automated deployment and a secure CI/CD pipeline for an application based on a microservices architecture, deployed on a cloud infrastructure built on OpenStack. The proposed solution relies on containerization using Docker and orchestration through Kubernetes to enable efficient and scalable service management. Infrastructure provisioning and configuration are automated using Terraform and Ansible, ensuring reproducibility and consistency across environments. A DevSecOps approach is adopted, integrating security analysis tools and automated testing into the CI/CD pipeline in order to identify vulnerabilities in source code, dependencies, and container images. Secure exposure of the microservices is provided through an NGINX reverse proxy, configured with SSL/TLS encryption, a Web Application Firewall (WAF), and traffic rate-limiting mechanisms. Finally, infrastructure monitoring is ensured through Prometheus and Grafana, offering visibility into the health of the Kubernetes cluster and the availability of deployed services."
+  },
+  {
+    id: 3,
+    role: "Cloud Security Intern",
+    company: "Solutec Nabeul",
+    duration: "02/2022 - 05/2023",
+    description: "Bachelor's degree end-of-study project, focused on deploying and Setting up a defense system for a private cloud (securing cloud infrastructure). Design and implementation of a multi-layered defense system for a private cloud, including host and network intrusion detection with Wazuh and Suricata, packet filtering via firewall, as well as real-time monitoring using Prometheus and Grafana. The system helps automatically detect, alert and block attacks such as network scans, brute force, SQL injections and DDoS attacks, validated by controlled attack tests. This project is part of a DevSecOps approach, guaranteeing the security, resilience and visibility of private cloud infrastructures."
   }
 ];
 
