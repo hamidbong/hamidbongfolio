@@ -91,20 +91,6 @@ const MOCK_SKILLS: Skill[] = [
 
 const MOCK_EXPERIENCE: Experience[] = [
   {
-    id: 4,
-    role: "Security Intern",
-    company: "CyberCorp Inc.",
-    duration: "2024 - Present",
-    description: "Assisting in penetration testing, monitoring SIEM logs, and automating threat detection scripts."
-  },
-  {
-    id: 3,
-    role: "Development internship",
-    company: "Solutec Nabeul",
-    duration: "01/2023 - 02/2023",
-    description: "Implementation of a log management solution (ELK Stack) for the company"
-  },
-  {
     id: 1,
     role: "DevSecOps Intern",
     company: "University Lab",
@@ -117,6 +103,20 @@ const MOCK_EXPERIENCE: Experience[] = [
     company: "Solutec Nabeul",
     duration: "02/2022 - 05/2023",
     description: "Bachelor’s end-of-study project (Implementation of a private Cloud solution in a secure environment) focused on the design and implementation of a secure private cloud infrastructure. Built a multi-layered defense system including host and network intrusion detection using Wazuh and Suricata, packet filtering through firewall rules, and real-time monitoring with Prometheus and Grafana. Implemented automated detection, alerting, and blocking of attacks such as network scans, brute-force attempts, SQL injections, and DDoS attacks, validated through controlled attack testing. This project followed a DevSecOps approach, ensuring security, resilience, and visibility of the private cloud environment."
+  },
+  {
+    id: 3,
+    role: "Development internship",
+    company: "Solutec Nabeul",
+    duration: "01/2023 - 02/2023",
+    description: "Implementation of a log management solution (ELK Stack) for the company"
+  },
+  {
+    id: 4,
+    role: "Security Intern",
+    company: "CyberCorp Inc.",
+    duration: "2024 - Present",
+    description: "Assisting in penetration testing, monitoring SIEM logs, and automating threat detection scripts."
   }
 
 ];
