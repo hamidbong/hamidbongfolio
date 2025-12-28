@@ -102,15 +102,30 @@ const MOCK_EXPERIENCE: Experience[] = [
     role: "DevSecOps Intern",
     company: "University Lab",
     duration: "2024 - 2025",
-    description: "This thesis focuses on the implementation of an automated deployment and a secure CI/CD pipeline for an application based on a microservices architecture, deployed on a cloud infrastructure built on OpenStack. The proposed solution relies on containerization using Docker and orchestration through Kubernetes to enable efficient and scalable service management. Infrastructure provisioning and configuration are automated using Terraform and Ansible, ensuring reproducibility and consistency across environments. A DevSecOps approach is adopted, integrating security analysis tools and automated testing into the CI/CD pipeline in order to identify vulnerabilities in source code, dependencies, and container images. Secure exposure of the microservices is provided through an NGINX reverse proxy, configured with SSL/TLS encryption, a Web Application Firewall (WAF), and traffic rate-limiting mechanisms. Finally, infrastructure monitoring is ensured through Prometheus and Grafana, offering visibility into the health of the Kubernetes cluster and the availability of deployed services."
+    description: "Master’s thesis project focused on the design and implementation of an automated and secure CI/CD pipeline for a microservices-based application deployed on an OpenStack cloud infrastructure. Implemented containerization with Docker and orchestration with Kubernetes, along with infrastructure provisioning and configuration using Terraform and Ansible to ensure reproducibility and consistency. Adopted a DevSecOps approach by integrating security scanning and automated testing into the CI/CD pipeline to detect vulnerabilities in source code, dependencies, and container images. Secured microservices exposure using NGINX with SSL/TLS, WAF, and rate-limiting, and implemented monitoring with Prometheus and Grafana to ensure cluster health and service availability."
   },
   {
     id: 3,
+    role: "DevSecOps Intern",
+    company: "University Lab",
+    duration: "2024 - 2025",
+    description: "Designed and implemented a secure CI/CD pipeline for a microservices application deployed on OpenStack, using Docker, Kubernetes, Terraform, and Ansible. Applied DevSecOps practices by integrating security scanning, automated testing, secure service exposure with NGINX (SSL/TLS, WAF), and infrastructure monitoring with Prometheus and Grafana."
+  },
+  {
+    id: 4,
     role: "Cloud Security Intern",
     company: "Solutec Nabeul",
     duration: "02/2022 - 05/2023",
-    description: "Bachelor's degree end-of-study project, focused on deploying and Setting up a defense system for a private cloud (securing cloud infrastructure). Design and implementation of a multi-layered defense system for a private cloud, including host and network intrusion detection with Wazuh and Suricata, packet filtering via firewall, as well as real-time monitoring using Prometheus and Grafana. The system helps automatically detect, alert and block attacks such as network scans, brute force, SQL injections and DDoS attacks, validated by controlled attack tests. This project is part of a DevSecOps approach, guaranteeing the security, resilience and visibility of private cloud infrastructures."
+    description: "Bachelor’s end-of-study project focused on the design and implementation of a secure private cloud infrastructure. Built a multi-layered defense system including host and network intrusion detection using Wazuh and Suricata, packet filtering through firewall rules, and real-time monitoring with Prometheus and Grafana. Implemented automated detection, alerting, and blocking of attacks such as network scans, brute-force attempts, SQL injections, and DDoS attacks, validated through controlled attack testing. This project followed a DevSecOps approach, ensuring security, resilience, and visibility of the private cloud environment."
+  },
+  {
+    id: 5,
+    role: "Cloud Security Intern",
+    company: "Solutec Nabeul",
+    duration: "02/2022 - 05/2023",
+    description: "Designed and implemented a secure private cloud defense system using Wazuh, Suricata, firewall rules, and real-time monitoring with Prometheus and Grafana. Applied DevSecOps practices to detect, alert, and block network and application attacks, validated through controlled security testing."
   }
+
 ];
 
 const MOCK_EDUCATION: Education[] = [
