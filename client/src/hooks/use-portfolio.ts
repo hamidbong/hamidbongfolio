@@ -63,7 +63,7 @@ const MOCK_PROJECTS: Project[] = [
   {
     id: 4,
     title: "Secure DevSecOps CI/CD on Private OpenStack Cloud",
-    description: "Design and implementation of a secure CI/CD pipeline for a microservices-based application deployed on a private OpenStack cloud (DevStack), integrating automated SAST, DAST, container security scans, and Kubernetes deployment.",
+    description: "Design and implementation of a secure CI/CD pipeline for a microservices-based application deployed on a private OpenStack cloud (DevStack), integrating automated SAST, Dependency Scanning, container security scans, and Kubernetes deployment.",
     techStack: [
       "OpenStack (DevStack)",
       "Kubernetes",
