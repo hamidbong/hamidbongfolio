@@ -62,6 +62,27 @@ const MOCK_PROJECTS: Project[] = [
   },
   {
     id: 4,
+    title: "Secure DevSecOps CI/CD on Private OpenStack Cloud",
+    description: "Design and implementation of a secure CI/CD pipeline for a microservices-based application deployed on a private OpenStack cloud (DevStack), integrating automated SAST, DAST, container security scans, and Kubernetes deployment.",
+    techStack: [
+      "OpenStack (DevStack)",
+      "Kubernetes",
+      "Docker",
+      "Helm",
+      "Jenkins CI/CD",
+      "SonarQube (SAST)",
+      "OWASP Check (Dependency Scanning)",
+      "Trivy",
+      "NGINX Ingress",
+      "Cert-Manager (SSL/TLS)",
+      "WAF (ModSecurity)",
+      "Prometheus & Grafana"
+    ],
+    repoUrl: "https://github.com/hamidbong/devops-project.git",
+    featured: true
+  },
+  {
+    id: 5,
     title: "Déploiement d'Application Web Hautement Disponible avec Ansible et NGINX",
     description: "Automatisation du déploiement d'une application web avec Ansible, NGINX et Bind9 pour une architecture hautement disponible",
     techStack: ["Ansible", "NGINX", "Bind9", "Linux"],
