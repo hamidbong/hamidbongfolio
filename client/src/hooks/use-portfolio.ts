@@ -184,7 +184,26 @@ const MOCK_PUBLICATIONS: Publication[] = [
     excerpt: "Comment utiliser Linkerd ou Istio pour implémenter une communication chiffrée entre vos services.",
     content: "Le mTLS (Mutual TLS) assure que le trafic entre les microservices est non seulement chiffré, mais aussi que chaque service authentifie l'autre. C'est un pilier de l'architecture Zero Trust au sein d'un cluster Kubernetes.",
     tags: ["Kubernetes", "mTLS", "Zero Trust"]
+  },
+  {
+    id: 3,
+    title: "Sécurité des repositories Git : gérer les fuites de secrets",
+    date: "31 Décembre 2025",
+    excerpt: "Guide pratique pour détecter, révoquer et sécuriser un repository après la fuite d’un secret (API key, token, mot de passe).",
+    content: `
+    Les repositories Git sont souvent la première cible lors d’une compromission.
+    Une fuite de secret (token, clé API, mot de passe) peut entraîner un accès non autorisé,
+    des pertes financières ou une compromission complète de l’infrastructure.
+
+    Ce tutoriel présente une approche DevSecOps pour :
+    - Identifier un secret exposé
+    - Révoquer et corriger l’incident
+    - Nettoyer l’historique Git
+    - Mettre en place des protections pour éviter toute récidive
+    `,
+    tags: ["Git", "DevSecOps", "Secrets", "Security", "CI/CD"]
   }
+
 ];
 
 export function useProjects() {

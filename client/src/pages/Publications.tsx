@@ -1,10 +1,13 @@
 import { usePublications } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
-import { motion } from "framer-motion";
-import { BookOpen, Calendar, Tag } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { BookOpen, Calendar, Tag, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export default function Publications() {
   const { data: publications, isLoading } = usePublications();
+  const [expandedId, setExpandedId] = useState<number | null>(null);
 
   if (isLoading) return null;
 
@@ -24,45 +27,84 @@ export default function Publications() {
       </div>
 
       <div className="grid gap-8">
-        {publications?.map((pub, idx) => (
-          <TerminalCard 
-            key={pub.id} 
-            title={`~/blog/${pub.title.toLowerCase().replace(/\s+/g, '-')}.md`}
-            delay={idx * 0.1}
-          >
-            <div className="space-y-4">
-              <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
-                  {pub.date}
+        {publications?.map((pub, idx) => {
+          const isExpanded = expandedId === pub.id;
+          
+          return (
+            <TerminalCard 
+              key={pub.id} 
+              title={`~/blog/${pub.title.toLowerCase().replace(/\s+/g, '-')}.md`}
+              delay={idx * 0.1}
+            >
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-3 h-3" />
+                    {pub.date}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <BookOpen className="w-3 h-3" />
+                    5 min read
+                  </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <BookOpen className="w-3 h-3" />
-                  5 min read
+
+                <h2 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                  {pub.title}
+                </h2>
+
+                <p className="text-muted-foreground leading-relaxed">
+                  {pub.excerpt}
+                </p>
+
+                <AnimatePresence>
+                  {isExpanded && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pt-4 text-foreground/90 whitespace-pre-wrap font-sans border-t border-border/20 mt-4">
+                        {pub.content}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                <div className="pt-4 flex items-center justify-between border-t border-border/40">
+                  <div className="flex flex-wrap gap-2">
+                    {pub.tags.map(tag => (
+                      <span key={tag} className="flex items-center gap-1 text-[10px] font-mono bg-primary/10 text-primary px-2 py-0.5 rounded border border-primary/20">
+                        <Tag className="w-2 h-2" />
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setExpandedId(isExpanded ? null : pub.id)}
+                    className="text-primary hover:text-primary/80 hover:bg-primary/10 gap-2"
+                  >
+                    {isExpanded ? (
+                      <>
+                        <ChevronUp className="w-4 h-4" />
+                        Voir moins
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-4 h-4" />
+                        Voir plus
+                      </>
+                    )}
+                  </Button>
                 </div>
               </div>
-
-              <h2 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
-                {pub.title}
-              </h2>
-
-              <p className="text-muted-foreground leading-relaxed">
-                {pub.excerpt}
-              </p>
-
-              <div className="pt-4 border-t border-border/40">
-                <div className="flex flex-wrap gap-2">
-                  {pub.tags.map(tag => (
-                    <span key={tag} className="flex items-center gap-1 text-[10px] font-mono bg-primary/10 text-primary px-2 py-0.5 rounded border border-primary/20">
-                      <Tag className="w-2 h-2" />
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </TerminalCard>
-        ))}
+            </TerminalCard>
+          );
+        })}
       </div>
     </div>
   );
