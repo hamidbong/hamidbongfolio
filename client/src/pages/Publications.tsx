@@ -1,0 +1,69 @@
+import { usePublications } from "@/hooks/use-portfolio";
+import { TerminalCard } from "@/components/TerminalCard";
+import { motion } from "framer-motion";
+import { BookOpen, Calendar, Tag } from "lucide-react";
+
+export default function Publications() {
+  const { data: publications, isLoading } = usePublications();
+
+  if (isLoading) return null;
+
+  return (
+    <div className="min-h-screen pt-24 pb-32 px-4 max-w-5xl mx-auto">
+      <div className="mb-12">
+        <motion.h1 
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="text-4xl md:text-5xl font-bold mb-4 font-mono"
+        >
+          <span className="text-primary">&gt;</span> ./publications
+        </motion.h1>
+        <p className="text-muted-foreground">
+          Articles techniques, retours d'expérience et réflexions sur la cybersécurité et le DevOps.
+        </p>
+      </div>
+
+      <div className="grid gap-8">
+        {publications?.map((pub, idx) => (
+          <TerminalCard 
+            key={pub.id} 
+            title={`~/blog/${pub.title.toLowerCase().replace(/\s+/g, '-')}.md`}
+            delay={idx * 0.1}
+          >
+            <div className="space-y-4">
+              <div className="flex items-center gap-4 text-xs font-mono text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <Calendar className="w-3 h-3" />
+                  {pub.date}
+                </div>
+                <div className="flex items-center gap-2">
+                  <BookOpen className="w-3 h-3" />
+                  5 min read
+                </div>
+              </div>
+
+              <h2 className="text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                {pub.title}
+              </h2>
+
+              <p className="text-muted-foreground leading-relaxed">
+                {pub.excerpt}
+              </p>
+
+              <div className="pt-4 border-t border-border/40">
+                <div className="flex flex-wrap gap-2">
+                  {pub.tags.map(tag => (
+                    <span key={tag} className="flex items-center gap-1 text-[10px] font-mono bg-primary/10 text-primary px-2 py-0.5 rounded border border-primary/20">
+                      <Tag className="w-2 h-2" />
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </TerminalCard>
+        ))}
+      </div>
+    </div>
+  );
+}

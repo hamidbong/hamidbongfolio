@@ -35,6 +35,15 @@ export interface Education {
   description: string;
 }
 
+export interface Publication {
+  id: number;
+  title: string;
+  date: string;
+  excerpt: string;
+  content: string;
+  tags: string[];
+}
+
 const MOCK_PROJECTS: Project[] = [
   {
     id: 1,
@@ -159,6 +168,25 @@ const MOCK_EDUCATION: Education[] = [
   }
 ];
 
+const MOCK_PUBLICATIONS: Publication[] = [
+  {
+    id: 1,
+    title: "L'importance du 'Shift Left' en DevSecOps",
+    date: "15 Mai 2025",
+    excerpt: "Pourquoi intégrer la sécurité dès les premières étapes du développement est crucial pour les entreprises modernes.",
+    content: "Le concept de 'Shift Left' consiste à déplacer les tests de sécurité plus tôt dans le cycle de développement logiciel (SDLC). En identifiant les vulnérabilités dès la phase de conception ou de codage, les équipes peuvent réduire considérablement les coûts et les risques associés aux cyberattaques.",
+    tags: ["DevSecOps", "Sécurité", "SDLC"]
+  },
+  {
+    id: 2,
+    title: "Sécuriser ses clusters Kubernetes avec mTLS",
+    date: "2 Mars 2025",
+    excerpt: "Comment utiliser Linkerd ou Istio pour implémenter une communication chiffrée entre vos services.",
+    content: "Le mTLS (Mutual TLS) assure que le trafic entre les microservices est non seulement chiffré, mais aussi que chaque service authentifie l'autre. C'est un pilier de l'architecture Zero Trust au sein d'un cluster Kubernetes.",
+    tags: ["Kubernetes", "mTLS", "Zero Trust"]
+  }
+];
+
 export function useProjects() {
   return { data: MOCK_PROJECTS, isLoading: false };
 }
@@ -173,6 +201,10 @@ export function useExperience() {
 
 export function useEducation() {
   return { data: MOCK_EDUCATION, isLoading: false };
+}
+
+export function usePublications() {
+  return { data: MOCK_PUBLICATIONS, isLoading: false };
 }
 
 import { useState } from "react";

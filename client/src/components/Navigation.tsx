@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Shield, Terminal, User, Mail, Briefcase } from "lucide-react";
+import { Shield, Terminal, User, Mail, Briefcase, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
@@ -7,6 +7,7 @@ const links = [
   { href: "/", label: "Home", icon: Terminal },
   { href: "/projects", label: "Projects", icon: Briefcase },
   { href: "/skills", label: "Skills", icon: Shield },
+  { href: "/publications", label: "Blog", icon: BookOpen },
   { href: "/contact", label: "Contact", icon: Mail },
 ];
 
