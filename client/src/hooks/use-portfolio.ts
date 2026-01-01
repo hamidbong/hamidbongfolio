@@ -42,7 +42,6 @@ export interface Publication {
   excerpt: string;
   content: string;
   tags: string[];
-  tagsUrl: string[];
 }
 
 const MOCK_PROJECTS: Project[] = [
@@ -176,8 +175,7 @@ const MOCK_PUBLICATIONS: Publication[] = [
     date: "15 Mai 2025",
     excerpt: "Pourquoi intégrer la sécurité dès les premières étapes du développement est crucial pour les entreprises modernes.",
     content: "Le concept de 'Shift Left' consiste à déplacer les tests de sécurité plus tôt dans le cycle de développement logiciel (SDLC). En identifiant les vulnérabilités dès la phase de conception ou de codage, les équipes peuvent réduire considérablement les coûts et les risques associés aux cyberattaques.",
-    tags: ["DevSecOps", "Sécurité", "SDLC"],
-    tagsUrl: ["/tags/devsecops", "/tags/securite", "/tags/sdlc"]
+    tags: ["DevSecOps", "Sécurité", "SDLC"]
   },
   {
     id: 2,
@@ -185,8 +183,7 @@ const MOCK_PUBLICATIONS: Publication[] = [
     date: "2 Mars 2025",
     excerpt: "Comment utiliser Linkerd ou Istio pour implémenter une communication chiffrée entre vos services.",
     content: "Le mTLS (Mutual TLS) assure que le trafic entre les microservices est non seulement chiffré, mais aussi que chaque service authentifie l'autre. C'est un pilier de l'architecture Zero Trust au sein d'un cluster Kubernetes.",
-    tags: ["Kubernetes", "mTLS", "Zero Trust"],
-    tagsUrl: ["/tags/kubernetes", "/tags/mtls", "/tags/zero-trust"]
+    tags: ["Kubernetes", "mTLS", "Zero Trust"]
   },
   {
     id: 3,
@@ -204,8 +201,7 @@ const MOCK_PUBLICATIONS: Publication[] = [
     - Nettoyer l’historique Git
     - Mettre en place des protections pour éviter toute récidive
     `,
-    tags: ["Git", "DevSecOps", "Secrets", "Security", "CI/CD"],
-    tagsUrl: ["/tags/git", "/tags/devsecops", "/tags/secrets", "/tags/security", "/tags/cicd"]
+    tags: ["Git", "DevSecOps", "Secrets", "Security", "CI/CD"]
   }
 
 ];
