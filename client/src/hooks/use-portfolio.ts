@@ -194,25 +194,6 @@ const MOCK_PUBLICATIONS: Publication[] = [
     date: "31 Décembre 2025",
     excerpt: "Guide pratique pour détecter, révoquer et sécuriser un repository après la fuite d’un secret (API key, token, mot de passe).",
     content: `
-    Les repositories Git sont souvent la première cible lors d’une compromission.
-    Une fuite de secret (token, clé API, mot de passe) peut entraîner un accès non autorisé,
-    des pertes financières ou une compromission complète de l’infrastructure.
-
-    Ce tutoriel présente une approche DevSecOps pour :
-    - Identifier un secret exposé
-    - Révoquer et corriger l’incident
-    - Nettoyer l’historique Git
-    - Mettre en place des protections pour éviter toute récidive
-    `,
-    tags: ["Git", "DevSecOps", "Secrets", "Security", "CI/CD"],
-    githubUrl: "https://github.com/example/git-secrets-management"
-  },
-  {
-    id: 3,
-    title: "Sécurité des repositories Git : gérer les fuites de secrets",
-    date: "31 Décembre 2025",
-    excerpt: "Guide pratique pour détecter, révoquer et sécuriser un repository après la fuite d’un secret (API key, token, mot de passe).",
-    content: `
     Les repositories Git constituent l’un des premiers points d’attaque dans une chaîne DevSecOps.
     Une simple fuite de secret (clé API, token, mot de passe) peut compromettre une application,
     un pipeline CI/CD ou une infrastructure complète.
