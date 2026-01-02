@@ -1,7 +1,7 @@
 import { usePublications } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
 import { motion, AnimatePresence } from "framer-motion";
-import { BookOpen, Calendar, Tag, ChevronDown, ChevronUp } from "lucide-react";
+import { BookOpen, Calendar, Tag, ChevronDown, ChevronUp, Github } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
@@ -68,6 +68,21 @@ export default function Publications() {
                       <div className="pt-4 text-foreground/90 whitespace-pre-wrap font-sans border-t border-border/20 mt-4">
                         {pub.content}
                       </div>
+                      {pub.githubUrl && (
+                        <div className="mt-4 flex justify-end">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="gap-2 border-primary/30 hover:border-primary/60 hover:bg-primary/5"
+                            asChild
+                          >
+                            <a href={pub.githubUrl} target="_blank" rel="noopener noreferrer">
+                              <Github className="w-4 h-4" />
+                              View full tutorial on GitHub
+                            </a>
+                          </Button>
+                        </div>
+                      )}
                     </motion.div>
                   )}
                 </AnimatePresence>
