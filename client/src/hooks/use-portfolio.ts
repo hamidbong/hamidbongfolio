@@ -189,33 +189,6 @@ const MOCK_PUBLICATIONS: Publication[] = [
     githubUrl: "https://github.com/example/secure-k8s-mtls"
   },
   {
-    id: 3,
-    title: "Sécurité des repositories Git : gérer les fuites de secrets",
-    date: "31 Décembre 2025",
-    excerpt: "Guide pratique pour détecter, révoquer et sécuriser un repository après la fuite d’un secret (API key, token, mot de passe).",
-    content: `
-    Les repositories Git constituent l’un des premiers points d’attaque dans une chaîne DevSecOps.
-    Une simple fuite de secret (clé API, token, mot de passe) peut compromettre une application,
-    un pipeline CI/CD ou une infrastructure complète.
-
-    Dans cette réalisation, je présente une approche DevSecOps basée sur un scénario réel :
-    la détection d’un secret exposé dans un repository Git et la gestion complète de l’incident.
-
-    🔐 Ce que couvre ce tutoriel :
-    - Détection automatique des secrets (GitGuardian, Gitleaks)
-    - Révocation et rotation immédiate des credentials compromis
-    - Suppression des secrets de l’historique Git
-    - Mise en place de protections préventives (pre-commit hooks, .gitignore)
-
-    🎯 Objectif :
-    Réduire les risques de compromission dès le niveau du repository.
-
-    👉 Le tutoriel complet et les scripts sont disponibles sur GitHub.
-    `,
-    tags: ["Git", "DevSecOps", "Secrets", "Security"],
-    githubUrl: "https://github.com/hamidbong/git-secret-incident-response.git"
-  },
-  {
     id: 4,
     title: "Sécurité des repositories Git : gérer les fuites de secrets",
     date: "31 Décembre 2025",
