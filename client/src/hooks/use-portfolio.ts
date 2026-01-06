@@ -48,30 +48,6 @@ export interface Publication {
 const MOCK_PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Secure Kubernetes Cluster",
-    description: "Automated deployment of a hardened Kubernetes cluster using Ansible and Terraform. Implemented network policies and RBAC.",
-    techStack: ["Kubernetes", "Terraform", "Ansible", "AWS"],
-    repoUrl: "https://github.com/example/k8s-hardened",
-    featured: true
-  },
-  {
-    id: 2,
-    title: "Vulnerability Scanner",
-    description: "A Python-based automated vulnerability scanner for internal networks. Generates reports on open ports and outdated services.",
-    techStack: ["Python", "Nmap", "Security"],
-    repoUrl: "https://github.com/example/vuln-scanner",
-    featured: true
-  },
-  {
-    id: 3,
-    title: "DevSecOps Pipeline Demo",
-    description: "Complete CI/CD pipeline with integrated SAST/DAST security checks using SonarQube and OWASP ZAP.",
-    techStack: ["GitHub Actions", "SonarQube", "OWASP ZAP", "Docker"],
-    repoUrl: "https://github.com/example/devsecops-pipeline",
-    featured: true
-  },
-  {
-    id: 4,
     title: "Secure DevSecOps CI/CD on Private OpenStack Cloud",
     description: "Design and implementation of a secure CI/CD pipeline for a microservices-based application deployed on a private OpenStack cloud (DevStack), integrating automated SAST, Dependency Scanning, container security scans, and Kubernetes deployment.",
     techStack: [
@@ -92,7 +68,7 @@ const MOCK_PROJECTS: Project[] = [
     featured: true
   },
   {
-    id: 5,
+    id: 2,
     title: "Déploiement d'Application Web Hautement Disponible avec Ansible et NGINX",
     description: "Automatisation du déploiement d'une application web avec Ansible, NGINX et Bind9 pour une architecture hautement disponible",
     techStack: ["Ansible", "NGINX", "Bind9", "Linux"],
@@ -103,20 +79,20 @@ const MOCK_PROJECTS: Project[] = [
 ];
 
 const MOCK_SKILLS: Skill[] = [
-  { id: 1, name: "Kubernetes", category: "DevOps", proficiency: 85, icon: "Container" },
-  { id: 2, name: "Docker", category: "DevOps", proficiency: 90, icon: "Box" },
+  { id: 1, name: "Kubernetes", category: "DevOps", proficiency: 65, icon: "Container" },
+  { id: 2, name: "Docker", category: "DevOps", proficiency: 80, icon: "Box" },
   { id: 3, name: "CI/CD (Jenkins)", category: "DevOps", proficiency: 90, icon: "Workflow" },
-  { id: 4, name: "Penetration Testing", category: "Security", proficiency: 75, icon: "Shield" },
+  { id: 4, name: "Penetration Testing", category: "Security", proficiency: 45, icon: "Shield" },
   { id: 5, name: "Network Security", category: "Security", proficiency: 80, icon: "Lock" },
   { id: 6, name: "SonarQube", category: "DevSecOps", proficiency: 70, icon: "Lock" },
   { id: 7, name: "OWASP Check", category: "DevSecOps", proficiency: 70, icon: "Lock" },
   { id: 8, name: "Trivy", category: "DevSecOps", proficiency: 70, icon: "Lock" },
-  { id: 9, name: "Python", category: "Backend", proficiency: 85, icon: "Code" },
+  { id: 9, name: "Python", category: "Backend", proficiency: 45, icon: "Code" },
   { id: 10, name: "Terraform", category: "DevOps", proficiency: 70, icon: "Cloud" },
-  { id: 11, name: "Ansible", category: "DevOps", proficiency: 75, icon: "Settings" },
-  { id: 12, name: "Linux", category: "System", proficiency: 85, icon: "Server" },
-  { id: 13, name: "Git", category: "DevOps", proficiency: 90, icon: "GitBranch" },
-  { id: 14, name: "OpenStack", category: "Cloud", proficiency: 70, icon: "Cloud" }
+  { id: 11, name: "Ansible", category: "DevOps", proficiency: 85, icon: "Settings" },
+  { id: 12, name: "Linux", category: "System", proficiency: 80, icon: "Server" },
+  { id: 13, name: "Git", category: "DevOps", proficiency: 65, icon: "GitBranch" },
+  { id: 14, name: "OpenStack", category: "Cloud", proficiency: 80, icon: "Cloud" }
 
 ];
 
@@ -141,15 +117,7 @@ const MOCK_EXPERIENCE: Experience[] = [
     company: "Solutec Nabeul",
     duration: "01/2023 - 02/2023",
     description: "Implementation of a log management solution (ELK Stack) for the company"
-  },
-  {
-    id: 4,
-    role: "Security Intern",
-    company: "CyberCorp Inc.",
-    duration: "2024 - Present",
-    description: "Assisting in penetration testing, monitoring SIEM logs, and automating threat detection scripts."
   }
-
 ];
 
 const MOCK_EDUCATION: Education[] = [
@@ -166,6 +134,13 @@ const MOCK_EDUCATION: Education[] = [
     school: "Institut Supérieur des Etudes Technologiques de Nabeul",
     duration: "2020 - 2023",
     description: "Specialisation en Reseaux et Services Informatiques."
+  },
+  {
+    id: 3,
+    degree: "Baccalauréat scientifique",
+    school: "LYCEE IQRA’A N'Djamena, Tchad",
+    duration: "2018 - 2019",
+    description: "Diplôme de fin d'études secondaires."
   }
 ];
 
@@ -181,15 +156,6 @@ const MOCK_PUBLICATIONS: Publication[] = [
   },
   {
     id: 2,
-    title: "Sécuriser ses clusters Kubernetes avec mTLS",
-    date: "2 Mars 2025",
-    excerpt: "Comment utiliser Linkerd ou Istio pour implémenter une communication chiffrée entre vos services.",
-    content: "Le mTLS (Mutual TLS) assure que le trafic entre les microservices est non seulement chiffré, mais aussi que chaque service authentifie l'autre. C'est un pilier de l'architecture Zero Trust au sein d'un cluster Kubernetes.",
-    tags: ["Kubernetes", "mTLS", "Zero Trust"],
-    githubUrl: "https://github.com/example/secure-k8s-mtls"
-  },
-  {
-    id: 3,
     title: "Sécurité des repositories Git : gérer les fuites de secrets",
     date: "31 Décembre 2025",
     excerpt: "Guide pratique pour détecter, révoquer et sécuriser un repository après la fuite d’un secret (API key, token, mot de passe).",
