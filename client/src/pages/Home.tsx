@@ -3,7 +3,11 @@ import { Shield, Lock, Server, Terminal as TerminalIcon, ChevronRight } from "lu
 import { Link } from "wouter";
 import { GlitchText } from "@/components/GlitchText";
 
+import { useLanguage } from "@/hooks/use-language";
+
 export default function Home() {
+  const { t } = useLanguage();
+  
   return (
     <div className="min-h-screen pt-24 pb-32 px-4 overflow-hidden grid-bg">
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
@@ -20,14 +24,14 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">
-              <span className="text-foreground">Hello, I'm Hamid Bong Brahim</span>
+              <span className="text-foreground">Hello, I'm</span>
               <br />
               <GlitchText text="CyberStudent" className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary" />
             </h1>
             
             <div className="h-20 text-xl md:text-2xl text-muted-foreground font-mono">
               <span className="terminal-cursor">
-                DevSecOps Engineer Junior | Network Security
+                {t("home.title")}
               </span>
             </div>
           </motion.div>
@@ -38,9 +42,7 @@ export default function Home() {
             transition={{ delay: 0.3 }}
             className="text-lg text-muted-foreground max-w-lg leading-relaxed"
           >
-            DevSecOps Engineer passionate about security, cloud technologies, and automation.
-            I support teams in securely deploying both microservices-based and monolithic applications,
-            industrializing CI/CD pipelines, and implementing resilient Kubernetes-based architectures.
+            {t("home.subtitle")}
           </motion.p>
 
           <motion.div 
@@ -51,12 +53,12 @@ export default function Home() {
           >
             <Link href="/projects">
               <div className="cursor-pointer px-8 py-4 rounded-xl font-bold bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:scale-105 active:scale-95 flex items-center gap-2">
-                View Projects <ChevronRight className="w-4 h-4" />
+                {t("home.view_projects")} <ChevronRight className="w-4 h-4" />
               </div>
             </Link>
             <Link href="/contact">
               <div className="cursor-pointer px-8 py-4 rounded-xl font-bold bg-muted hover:bg-muted/80 border border-border transition-all hover:scale-105 active:scale-95">
-                Contact Me
+                {t("home.contact_me")}
               </div>
             </Link>
           </motion.div>

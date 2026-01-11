@@ -1,7 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { serveStatic } from "./static";
-import { createServer } from "http";
-
+import { createServer } from "http";import net from "net";
 const app = express();
 const httpServer = createServer(app);
 
@@ -35,15 +34,42 @@ export function log(message: string, source = "express") {
     await setupVite(httpServer, app);
   }
 
-  const port = parseInt(process.env.PORT || "5000", 10);
+  const startPort = parseInt(process.env.PORT || "5000", 10);
+
+  const isPortFree = (port: number): Promise<boolean> => {
+    return new Promise((resolve) => {
+      const tester = net
+        .createServer()
+        .once("error", (err: any) => {
+          if (err && err.code === "EADDRINUSE") {
+            resolve(false);
+          } else {
+            resolve(false);
+          }
+        })
+        .once("listening", () => {
+          tester.close(() => resolve(true));
+        })
+        .listen({ port, host: "0.0.0.0" });
+    });
+  };
+
+  let chosenPort = startPort;
+  for (let i = 0; i < 20; i++) {
+    // eslint-disable-next-line no-await-in-loop
+    const free = await isPortFree(chosenPort);
+    if (free) break;
+    log(`port ${chosenPort} in use, trying ${chosenPort + 1}`);
+    chosenPort += 1;
+  }
+
   httpServer.listen(
     {
-      port,
+      port: chosenPort,
       host: "0.0.0.0",
-      reusePort: true,
     },
     () => {
-      log(`serving on port ${port}`);
+      log(`serving on port ${chosenPort}`);
     },
   );
 })();

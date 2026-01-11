@@ -1,8 +1,10 @@
 import { Switch, Route } from "wouter";
+import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { queryClient } from "@/lib/queryClient";
 import { Toaster } from "@/components/ui/toaster";
 import { Navigation } from "@/components/Navigation";
+import { LanguageProvider } from "@/hooks/use-language";
+import { LanguageToggle } from "@/components/LanguageToggle";
 import Home from "@/pages/Home";
 import Projects from "@/pages/Projects";
 import Skills from "@/pages/Skills";
@@ -26,11 +28,16 @@ function Router() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground">
-        <Router />
-        <Navigation />
-        <Toaster />
-      </div>
+      <LanguageProvider>
+        <div className="min-h-screen bg-background text-foreground antialiased selection:bg-primary/30 selection:text-primary-foreground">
+          <div className="fixed top-6 right-6 z-[60]">
+            <LanguageToggle />
+          </div>
+          <Router />
+          <Navigation />
+          <Toaster />
+        </div>
+      </LanguageProvider>
     </QueryClientProvider>
   );
 }

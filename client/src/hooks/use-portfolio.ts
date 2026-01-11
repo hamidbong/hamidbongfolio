@@ -2,8 +2,8 @@ import { useMemo } from "react";
 
 export interface Project {
   id: number;
-  title: string;
-  description: string;
+  title: Record<string, string>;
+  description: Record<string, string>;
   techStack: string[];
   repoUrl?: string;
   demoUrl?: string;
@@ -21,26 +21,26 @@ export interface Skill {
 
 export interface Experience {
   id: number;
-  role: string;
+  role: Record<string, string>;
   company: string;
   duration: string;
-  description: string;
+  description: Record<string, string>;
 }
 
 export interface Education {
   id: number;
-  degree: string;
+  degree: Record<string, string>;
   school: string;
   duration: string;
-  description: string;
+  description: Record<string, string>;
 }
 
 export interface Publication {
   id: number;
-  title: string;
+  title: Record<string, string>;
   date: string;
-  excerpt: string;
-  content: string;
+  excerpt: Record<string, string>;
+  content: Record<string, string>;
   tags: string[];
   githubUrl?: string;
 }
@@ -48,8 +48,10 @@ export interface Publication {
 const MOCK_PROJECTS: Project[] = [
   {
     id: 1,
-    title: "Secure DevSecOps CI/CD on Private OpenStack Cloud",
-    description: "Design and implementation of a secure CI/CD pipeline for a microservices-based application deployed on a private OpenStack cloud (DevStack), integrating automated SAST, Dependency Scanning, container security scans, and Kubernetes deployment.",
+    title: { fr: "CI/CD DevSecOps sécurisé sur un cloud OpenStack privé", en: "Secure DevSecOps CI/CD on Private OpenStack Cloud" },
+    description: { 
+      fr: "Conception et mise en œuvre d'un pipeline CI/CD sécurisé pour une application basée sur des microservices déployée sur un cloud privé OpenStack (DevStack), intégrant l'analyse statique de la sécurité des applications (SAST) automatisée, l'analyse des dépendances, les analyses de sécurité des conteneurs et le déploiement Kubernetes.",
+      en: "Design and implementation of a secure CI/CD pipeline for a microservices-based application deployed on a private OpenStack cloud (DevStack), integrating automated SAST, Dependency Scanning, container security scans, and Kubernetes deployment."},
     techStack: [
       "OpenStack (DevStack)",
       "Kubernetes",
@@ -69,8 +71,10 @@ const MOCK_PROJECTS: Project[] = [
   },
   {
     id: 2,
-    title: "Déploiement d'Application Web Hautement Disponible avec Ansible et NGINX",
-    description: "Automatisation du déploiement d'une application web avec Ansible, NGINX et Bind9 pour une architecture hautement disponible",
+    title: { fr: "Déploiement d'Application Web Hautement Disponible avec Ansible et NGINX",
+      en: "Highly Available Web Application Deployment with Ansible and NGINX" },
+    description: { fr: "Automatisation du déploiement d'une application web avec Ansible, NGINX et Bind9 pour une architecture hautement disponible",
+      en: "Automated deployment of a web application with Ansible, NGINX, and Bind9 for a highly available architecture" },
     techStack: ["Ansible", "NGINX", "Bind9", "Linux"],
     repoUrl: "https://github.com/hamidbong/ansible-loadbalancer.git",
     featured: true
@@ -99,85 +103,109 @@ const MOCK_SKILLS: Skill[] = [
 const MOCK_EXPERIENCE: Experience[] = [
   {
     id: 1,
-    role: "DevSecOps Intern",
+    role: { fr:"Stagiaire DevSecOps", en: "DevSecOps Intern" },
     company: "University Lab",
     duration: "2024 - 2025",
-    description: "Master’s thesis project (Automated Deployment and Secure CI/CD for a Microservices Application) focused on the design and implementation of an automated and secure CI/CD pipeline for a microservices-based application deployed on an OpenStack cloud infrastructure. Implemented containerization with Docker and orchestration with Kubernetes, along with infrastructure provisioning and configuration using Terraform and Ansible to ensure reproducibility and consistency. Adopted a DevSecOps approach by integrating security scanning and automated testing into the CI/CD pipeline to detect vulnerabilities in source code, dependencies, and container images. Secured microservices exposure using NGINX with SSL/TLS, WAF, and rate-limiting, and implemented monitoring with Prometheus and Grafana to ensure cluster health and service availability."
+    description: { fr: "Master’s thesis project (Automated Deployment and Secure CI/CD for a Microservices Application) focused on the design and implementation of an automated and secure CI/CD pipeline for a microservices-based application deployed on an OpenStack cloud infrastructure. Implemented containerization with Docker and orchestration with Kubernetes, along with infrastructure provisioning and configuration using Terraform and Ansible to ensure reproducibility and consistency. Adopted a DevSecOps approach by integrating security scanning and automated testing into the CI/CD pipeline to detect vulnerabilities in source code, dependencies, and container images. Secured microservices exposure using NGINX with SSL/TLS, WAF, and rate-limiting, and implemented monitoring with Prometheus and Grafana to ensure cluster health and service availability.",
+      en: "Master’s thesis project (Automated Deployment and Secure CI/CD for a Microservices Application) focused on the design and implementation of an automated and secure CI/CD pipeline for a microservices-based application deployed on an OpenStack cloud infrastructure. Implemented containerization with Docker and orchestration with Kubernetes, along with infrastructure provisioning and configuration using Terraform and Ansible to ensure reproducibility and consistency. Adopted a DevSecOps approach by integrating security scanning and automated testing into the CI/CD pipeline to detect vulnerabilities in source code, dependencies, and container images. Secured microservices exposure using NGINX with SSL/TLS, WAF, and rate-limiting, and implemented monitoring with Prometheus and Grafana to ensure cluster health and service availability." }
   },
   {
     id: 2,
-    role: "Cloud Security Intern",
+    role: { fr:"Cloud Security Intern", en: "Cloud Security Intern" },
     company: "Solutec Nabeul",
     duration: "02/2022 - 05/2023",
-    description: "Bachelor’s end-of-study project (Implementation of a private Cloud solution in a secure environment) focused on the design and implementation of a secure private cloud infrastructure. Built a multi-layered defense system including host and network intrusion detection using Wazuh and Suricata, packet filtering through firewall rules, and real-time monitoring with Prometheus and Grafana. Implemented automated detection, alerting, and blocking of attacks such as network scans, brute-force attempts, SQL injections, and DDoS attacks, validated through controlled attack testing. This project followed a DevSecOps approach, ensuring security, resilience, and visibility of the private cloud environment."
+    description: { fr: "Bachelor’s end-of-study project (Implementation of a private Cloud solution in a secure environment) focused on the design and implementation of a secure private cloud infrastructure. Built a multi-layered defense system including host and network intrusion detection using Wazuh and Suricata, packet filtering through firewall rules, and real-time monitoring with Prometheus and Grafana. Implemented automated detection, alerting, and blocking of attacks such as network scans, brute-force attempts, SQL injections, and DDoS attacks, validated through controlled attack testing. This project followed a DevSecOps approach, ensuring security, resilience, and visibility of the private cloud environment.",
+      en: "Bachelor’s end-of-study project (Implementation of a private Cloud solution in a secure environment) focused on the design and implementation of a secure private cloud infrastructure. Built a multi-layered defense system including host and network intrusion detection using Wazuh and Suricata, packet filtering through firewall rules, and real-time monitoring with Prometheus and Grafana. Implemented automated detection, alerting, and blocking of attacks such as network scans, brute-force attempts, SQL injections, and DDoS attacks, validated through controlled attack testing. This project followed a DevSecOps approach, ensuring security, resilience, and visibility of the private cloud environment." }
   },
   {
     id: 3,
-    role: "Development internship",
+    role: { fr:"Stage de développement", en: "Development internship" },
     company: "Solutec Nabeul",
     duration: "01/2023 - 02/2023",
-    description: "Implementation of a log management solution (ELK Stack) for the company"
+    description: { fr: "Mise en place d'une solution de gestion des logs (ELK Stack) pour l'entreprise",
+      en: "Implementation of a log management solution (ELK Stack) for the company" }
   }
 ];
 
 const MOCK_EDUCATION: Education[] = [
   {
     id: 1,
-    degree: "Mastère professionnel en Sécurité des Systèmes Informatiques",
+    degree: { fr: "Mastère professionnel en Sécurité des Systèmes Informatiques", en: "Professional Master's in Information Systems Security" },
     school: "Institut Supérieur d'Informatique et de Multimédia de Gabès",
     duration: "2023 - 2025",
-    description: "Spécialisation en DevSecOps."
+    description: { fr: "Spécialisation en DevSecOps.", en: "Specialization in DevSecOps." }
   },
   {
     id: 2,
-    degree: "Licence en Technologie d'Informatique",
+    degree: { fr: "Licence en Technologie d'Informatique", en: "Bachelor's Degree in Computer Technology" },
     school: "Institut Supérieur des Etudes Technologiques de Nabeul",
     duration: "2020 - 2023",
-    description: "Specialisation en Reseaux et Services Informatiques."
+    description: { fr: "Specialisation en Reseaux et Services Informatiques.", en: "Specialization in Networks and IT Services." }
   },
   {
     id: 3,
-    degree: "Baccalauréat scientifique",
+    degree: { fr: "Baccalauréat scientifique", en: "Scientific Baccalaureate" },
     school: "LYCEE IQRA’A N'Djamena, Tchad",
     duration: "2018 - 2019",
-    description: "Diplôme de fin d'études secondaires."
+    description: { fr: "Diplôme de fin d'études secondaires.", en: "High school diploma." }
   }
 ];
 
 const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: 1,
-    title: "L'importance du 'Shift Left' en DevSecOps",
+    title: { fr: "L'importance du 'Shift Left' en DevSecOps", en: "The Importance of 'Shift Left' in DevSecOps" },
     date: "15 Mai 2025",
-    excerpt: "Pourquoi intégrer la sécurité dès les premières étapes du développement est crucial pour les entreprises modernes.",
-    content: "Le concept de 'Shift Left' consiste à déplacer les tests de sécurité plus tôt dans le cycle de développement logiciel (SDLC). En identifiant les vulnérabilités dès la phase de conception ou de codage, les équipes peuvent réduire considérablement les coûts et les risques associés aux cyberattaques.",
+    excerpt: { fr: "Pourquoi intégrer la sécurité dès les premières étapes du développement est crucial pour les entreprises modernes.", en: "Why integrating security early in the development process is crucial for modern businesses." },
+    content: { fr: "Le concept de 'Shift Left' consiste à déplacer les tests de sécurité plus tôt dans le cycle de développement logiciel (SDLC). En identifiant les vulnérabilités dès la phase de conception ou de codage, les équipes peuvent réduire considérablement les coûts et les risques associés aux cyberattaques.", en: "The 'Shift Left' concept involves moving security testing earlier in the software development lifecycle (SDLC). By identifying vulnerabilities during the design or coding phase, teams can significantly reduce costs and risks associated with cyberattacks." },
     tags: ["DevSecOps", "Sécurité", "SDLC"],
     githubUrl: "https://github.com/example/shift-left-devsecops"
   },
   {
     id: 2,
-    title: "Sécurité des repositories Git : gérer les fuites de secrets",
+    title: { fr: "Sécurité des repositories Git : gérer les fuites de secrets", en: "Git Repository Security: Managing Secret Leaks" },
     date: "31 Décembre 2025",
-    excerpt: "Guide pratique pour détecter, révoquer et sécuriser un repository après la fuite d’un secret (API key, token, mot de passe).",
-    content: `
-    Les repositories Git constituent l’un des premiers points d’attaque dans une chaîne DevSecOps.
-    Une simple fuite de secret (clé API, token, mot de passe) peut compromettre une application,
-    un pipeline CI/CD ou une infrastructure complète.
+    excerpt: { fr: "Guide pratique pour détecter, révoquer et sécuriser un repository après la fuite d’un secret (API key, token, mot de passe).",
+      en: "Practical guide to detecting, revoking, and securing a repository after a secret leak (API key, token, password)." },
+    content: { 
+      fr:`
+        Les repositories Git constituent l’un des premiers points d’attaque dans une chaîne DevSecOps.
+        Une simple fuite de secret (clé API, token, mot de passe) peut compromettre une application,
+        un pipeline CI/CD ou une infrastructure complète.
 
-    Dans cette réalisation, je présente une approche DevSecOps basée sur un scénario réel :
-    la détection d’un secret exposé dans un repository Git et la gestion complète de l’incident.
+        Dans cette réalisation, je présente une approche DevSecOps basée sur un scénario réel :
+        la détection d’un secret exposé dans un repository Git et la gestion complète de l’incident.
 
-    🔐 Ce que couvre ce tutoriel :
-    - Détection automatique des secrets (GitGuardian, Gitleaks)
-    - Révocation et rotation immédiate des credentials compromis
-    - Suppression des secrets de l’historique Git
-    - Mise en place de protections préventives (pre-commit hooks, .gitignore)
+        🔐 Ce que couvre ce tutoriel :
+        - Détection automatique des secrets (GitGuardian, Gitleaks)
+        - Révocation et rotation immédiate des credentials compromis
+        - Suppression des secrets de l’historique Git
+        - Mise en place de protections préventives (pre-commit hooks, .gitignore)
 
-    🎯 Objectif :
-    Réduire les risques de compromission dès le niveau du repository.
+        🎯 Objectif :
+        Réduire les risques de compromission dès le niveau du repository.
 
-    👉 Le tutoriel complet et les scripts sont disponibles sur GitHub.
-    `,
+        👉 Le tutoriel complet et les scripts sont disponibles sur GitHub.
+        `,
+      en:`
+        Git repositories are one of the primary attack vectors in a DevSecOps pipeline.
+        A simple secret leak (API key, token, password) can compromise an application,
+        a CI/CD pipeline, or an entire infrastructure.
+
+        In this project, I present a DevSecOps approach based on a real scenario:
+        detecting an exposed secret in a Git repository and managing the entire incident.
+
+        🔐 What this tutorial covers:
+        - Automated secret detection (GitGuardian, Gitleaks)
+        - Immediate revocation and rotation of compromised credentials
+        - Removal of secrets from Git history
+        - Implementation of preventive protections (pre-commit hooks, .gitignore)
+
+        🎯 Objective:
+        Reduce compromise risks at the repository level.
+
+        👉 The complete tutorial and scripts are available on GitHub.`
+    },
     tags: ["Git", "DevSecOps", "Secrets", "Security"],
     githubUrl: "https://github.com/hamidbong/git-secret-incident-response.git"
   }
@@ -210,17 +238,15 @@ export function useSendMessage() {
   const [isPending, setIsPending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const mutate = (data: any, options: { onSuccess?: () => void; onError?: (error: any) => void }) => {
+  const mutateAsync = async (data: any) => {
     setIsPending(true);
     setIsSuccess(false);
 
-    // Import EmailJS dynamically to avoid SSR issues
-    import('@emailjs/browser').then(({ default: emailjs }) => {
+    try {
+      const { default: emailjs } = await import('@emailjs/browser');
       emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
-      console.log("Sending email with data:", data);
-
-      emailjs.send(
+      await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
@@ -229,24 +255,30 @@ export function useSendMessage() {
           message: data.message,
           to_email: import.meta.env.VITE_RECIPIENT_EMAIL,
         }
-      ).then(() => {
-        setIsPending(false);
-        setIsSuccess(true);
-        if (options.onSuccess) options.onSuccess();
-      }).catch((error) => {
-        setIsPending(false);
-        setIsSuccess(false);
-        if (options.onError) options.onError(error);
-      });
-    }).catch((error) => {
+      );
+
+      setIsPending(false);
+      setIsSuccess(true);
+    } catch (error) {
       setIsPending(false);
       setIsSuccess(false);
-      if (options.onError) options.onError(error);
-    });
+      throw error;
+    }
+  };
+
+  const mutate = (data: any, options: { onSuccess?: () => void; onError?: (error: any) => void }) => {
+    mutateAsync(data)
+      .then(() => {
+        if (options.onSuccess) options.onSuccess();
+      })
+      .catch((error) => {
+        if (options.onError) options.onError(error);
+      });
   };
 
   return {
     mutate,
+    mutateAsync,
     isPending,
     isSuccess
   };

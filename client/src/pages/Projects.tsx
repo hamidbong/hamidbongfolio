@@ -2,9 +2,11 @@ import { useProjects } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
 import { Github, ExternalLink, Code2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/hooks/use-language";
 
 export default function Projects() {
   const { data: projects, isLoading } = useProjects();
+  const { t, language } = useLanguage();
 
   if (isLoading) {
     return (
@@ -28,7 +30,7 @@ export default function Projects() {
           <span className="text-primary">&gt;</span> ./projects
         </motion.h1>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          A collection of security tools, infrastructure configurations, and full-stack applications I've built.
+          {t("projects.subtitle")}
         </p>
       </div>
 
@@ -36,7 +38,7 @@ export default function Projects() {
         {projects?.map((project, idx) => (
           <TerminalCard 
             key={project.id} 
-            title={`~/projects/${project.title.toLowerCase().replace(/\s+/g, '-')}`}
+            title={`~/projects/${project.title[language].toLowerCase().replace(/\s+/g, '-')}`}
             delay={idx * 0.1}
             className="h-full flex flex-col"
           >
@@ -44,7 +46,7 @@ export default function Projects() {
               <div className="mb-6 rounded-lg overflow-hidden border border-border/50 group">
                 <img 
                   src={project.imageUrl} 
-                  alt={project.title}
+                  alt={project.title[language]}
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" 
                 />
               </div>
@@ -52,10 +54,10 @@ export default function Projects() {
 
             <div className="flex-1">
               <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
-                {project.title}
+                {project.title[language]}
               </h3>
-              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                {project.description}
+              <p className="text-muted-foreground mb-4 line-clamp-3 text-sm leading-relaxed">
+                {project.description[language]}
               </p>
             </div>
 

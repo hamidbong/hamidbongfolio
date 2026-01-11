@@ -2,20 +2,23 @@ import { Link, useLocation } from "wouter";
 import { Shield, Terminal, User, Mail, Briefcase, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-const links = [
-  { href: "/", label: "Home", icon: Terminal },
-  { href: "/projects", label: "Projects", icon: Briefcase },
-  { href: "/skills", label: "Skills", icon: Shield },
-  { href: "/publications", label: "Blog", icon: BookOpen },
-  { href: "/contact", label: "Contact", icon: Mail },
-];
+import { useLanguage } from "@/hooks/use-language";
+import { LanguageToggle } from "./LanguageToggle";
 
 export function Navigation() {
   const [location] = useLocation();
+  const { t } = useLanguage();
+
+  const links = [
+    { href: "/", label: t("nav.home"), icon: Terminal },
+    { href: "/projects", label: t("nav.projects"), icon: Briefcase },
+    { href: "/skills", label: t("nav.skills"), icon: Shield },
+    { href: "/publications", label: t("nav.blog"), icon: BookOpen },
+    { href: "/contact", label: t("nav.contact"), icon: Mail },
+  ];
 
   return (
-    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+    <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-4">
       <div className="bg-background/80 backdrop-blur-lg border border-border/50 rounded-full px-4 py-3 shadow-2xl shadow-primary/5 flex items-center gap-2">
         {links.map(({ href, label, icon: Icon }) => {
           const isActive = location === href;

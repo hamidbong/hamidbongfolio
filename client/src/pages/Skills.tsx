@@ -3,6 +3,7 @@ import { TerminalCard } from "@/components/TerminalCard";
 import { motion } from "framer-motion";
 import { Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu, GraduationCap, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/hooks/use-language";
 
 const icons: Record<string, any> = {
   Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu
@@ -12,6 +13,7 @@ export default function Skills() {
   const { data: skills, isLoading: skillsLoading } = useSkills();
   const { data: experience, isLoading: expLoading } = useExperience();
   const { data: education, isLoading: eduLoading } = useEducation();
+  const { t, language } = useLanguage();
 
   if (skillsLoading || expLoading || eduLoading) return null;
 
@@ -97,7 +99,7 @@ export default function Skills() {
               <div className="absolute -left-[41px] top-0 w-5 h-5 rounded-full bg-background border-4 border-primary shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
               
               <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
-                <h3 className="text-xl font-bold text-foreground">{exp.role}</h3>
+                <h3 className="text-xl font-bold text-foreground">{exp.role[language]}</h3>
                 <span className="hidden sm:block text-muted-foreground">•</span>
                 <span className="text-lg text-primary">{exp.company}</span>
               </div>
@@ -107,7 +109,7 @@ export default function Skills() {
               </div>
               
               <p className="text-muted-foreground leading-relaxed max-w-3xl">
-                {exp.description}
+                {exp.description[language]}
               </p>
             </motion.div>
           ))}
@@ -127,18 +129,18 @@ export default function Skills() {
           {education?.map((edu, idx) => (
             <TerminalCard 
               key={edu.id}
-              title={`~/edu/${edu.degree.toLowerCase().replace(/\s+/g, '-')}`}
+              title={`~/edu/${edu.degree[language].toLowerCase().replace(/\s+/g, '-')}`}
               delay={idx * 0.1}
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <GraduationCap className="w-5 h-5 text-primary" />
-                    <h3 className="text-xl font-bold text-foreground">{edu.degree}</h3>
+                    <h3 className="text-xl font-bold text-foreground">{edu.degree[language]}</h3>
                   </div>
                   <p className="text-primary font-medium mb-1">{edu.school}</p>
                   <p className="text-sm text-muted-foreground font-mono mb-4">{edu.duration}</p>
-                  <p className="text-muted-foreground text-sm max-w-2xl">{edu.description}</p>
+                  <p className="text-muted-foreground text-sm max-w-2xl">{edu.description[language]}</p>
                 </div>
               </div>
             </TerminalCard>
@@ -152,18 +154,14 @@ export default function Skills() {
           whileInView={{ scale: 1, opacity: 1 }}
           className="text-center"
         >
-          <h2 className="text-2xl font-bold mb-4 font-mono">Prêt pour une collaboration ?</h2>
+          <h2 className="text-2xl font-bold mb-4 font-mono">{t("education.title")}</h2>
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-            Téléchargez mon CV complet pour découvrir l'intégralité de mon parcours et mes compétences techniques.
+            {t("education.download_cv_desc")}
           </p>
-          <a 
-            href="/CVBrahimHamidBong.pdf" 
-            download 
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 hover-elevate active-elevate-2 bg-primary text-primary-foreground border border-primary-border min-h-10 rounded-md px-8 group"
-          >
+          <Button size="lg" className="gap-2 group">
             <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-            Télécharger mon CV (PDF)
-          </a>
+            {t("education.download_cv")}
+          </Button>
         </motion.div>
       </div>
     </div>
