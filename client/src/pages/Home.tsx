@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Shield, Lock, Server, Terminal as TerminalIcon, ChevronRight } from "lucide-react";
+import { Shield, Lock, Server, Terminal as TerminalIcon, ChevronRight, Download, BookOpen } from "lucide-react";
 import { Link } from "wouter";
 import { GlitchText } from "@/components/GlitchText";
 
@@ -61,6 +61,36 @@ export default function Home() {
                 {t("home.contact_me")}
               </div>
             </Link>
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-col gap-3 pt-4 border-t border-border/50"
+          >
+            <h3 className="text-sm font-mono text-muted-foreground uppercase tracking-widest flex items-center gap-2">
+              <BookOpen className="w-4 h-4" /> CV / Resume
+            </h3>
+            <div className="flex gap-4">
+              <a 
+                href="/CVBrahimHamidBong.pdf" 
+                target="_blank"
+                className="group flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
+              >
+                <Download className="w-4 h-4 group-hover:animate-bounce" />
+                {t("cv.french")}
+              </a>
+              <span className="text-border">|</span>
+              <a 
+                href="/CVBrahimHamidBong.pdf" 
+                target="_blank"
+                className="group flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-secondary transition-colors"
+              >
+                <Download className="w-4 h-4 group-hover:animate-bounce" />
+                {t("cv.english")}
+              </a>
+            </div>
           </motion.div>
         </div>
 

@@ -158,10 +158,20 @@ export default function Skills() {
           <p className="text-muted-foreground mb-8 max-w-md mx-auto">
             {t("education.download_cv_desc")}
           </p>
-          <Button size="lg" className="gap-2 group">
-            <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
-            {t("education.download_cv")}
-          </Button>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button variant="default" size="lg" className="gap-2 group" asChild>
+              <a href="/CVBrahimHamidBong.pdf" target="_blank">
+                <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                {t("cv.french")}
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" className="gap-2 group" asChild>
+              <a href="/CVBrahimHamidBong.pdf" target="_blank">
+                <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
+                {t("cv.english")}
+              </a>
+            </Button>
+          </div>
         </motion.div>
       </div>
     </div>

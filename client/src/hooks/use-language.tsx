@@ -40,6 +40,8 @@ const translations = {
     "education.title": "Éducation",
     "education.download_cv": "Télécharger mon CV",
     "education.download_cv_desc": "Téléchargez mon CV complet pour découvrir l'intégralité de mon parcours et mes compétences techniques.",
+    "cv.french": "Version Française",
+    "cv.english": "Version Anglaise",
   },
   en: {
     "nav.home": "Home",
@@ -72,6 +74,8 @@ const translations = {
     "education.title": "Education",
     "education.download_cv": "Download My CV",
     "education.download_cv_desc": "Download my full CV to discover my entire background and technical skills.",
+    "cv.french": "French Version",
+    "cv.english": "English Version",
   }
 };
 
