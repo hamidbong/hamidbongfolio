@@ -24,7 +24,7 @@ export default function Home() {
             </div>
             
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-4">
-              <span className="text-foreground">Hello, I'm</span>
+              <span className="text-foreground">Hello, I'm Hamid Bong</span>
               <br />
               <GlitchText text="CyberStudent" className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary" />
             </h1>
