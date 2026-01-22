@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Mail, Send, Loader2, CheckCircle2, Phone, Github, Linkedin, Twitter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/hooks/use-language";
 
 const insertMessageSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -25,8 +26,15 @@ const SOCIAL_LINKS = [
 
 export default function Contact() {
   const { toast } = useToast();
+  const { t, language } = useLanguage();
   const sendMessage = useSendMessage();
-  
+
+  const insertMessageSchema = z.object({
+    name: z.string().min(1, language === "fr" ? "Le nom est requis" : "Name is required"),
+    email: z.string().email(language === "fr" ? "Adresse email invalide" : "Invalid email address"),
+    message: z.string().min(10, language === "fr" ? "Le message doit faire au moins 10 caractères" : "Message must be at least 10 characters")
+  });
+
   const form = useForm<InsertMessage>({
     resolver: zodResolver(insertMessageSchema),
     defaultValues: {
@@ -35,23 +43,22 @@ export default function Contact() {
       message: ""
     }
   });
-  
+
   const onSubmit = (data: InsertMessage) => {
-    sendMessage.mutate(data, {
-      onSuccess: () => {
-        toast({
-          title: "Message Encrypted & Sent",
-          description: "Thank you for reaching out. I'll get back to you shortly.",
-        });
-        form.reset();
-      },
-      onError: (error) => {
-        toast({
-          title: "Transmission Failed",
-          description: error.message,
-          variant: "destructive",
-        });
-      }
+    sendMessage.mutateAsync(data).then(() => {
+      toast({
+        title: t("contact.success"),
+        description: language === "fr" 
+          ? "Merci de m'avoir contacté. Je vous répondrai sous peu." 
+          : "Thank you for reaching out. I'll get back to you shortly.",
+      });
+      form.reset();
+    }).catch((error: any) => {
+      toast({
+        title: t("contact.error"),
+        description: error.message || (language === "fr" ? "Une erreur inconnue est survenue" : "An unknown error occurred"),
+        variant: "destructive",
+      });
     });
   };
 
@@ -73,7 +80,7 @@ export default function Contact() {
           <span className="text-primary">&gt;</span> ./initialize_comms
         </motion.h1>
         <p className="text-muted-foreground">
-          Ready to discuss security or a new project? Choose your preferred communication channel.
+          {t("contact.subtitle")}
         </p>
       </div>
 
@@ -117,7 +124,11 @@ export default function Contact() {
               <span className="text-green-500">SYSTEMS_ONLINE</span>
             </div>
             <p className="mt-4 text-xs text-muted-foreground leading-relaxed">
-              Accepting new security challenges and DevOps missions. <span className="text-foreground">Currently available</span>.
+              
+              {language === "fr" 
+                ? "J'accepte de nouveaux audits de sécurité et des missions DevOps. "
+                : "Accepting new security challenges and DevOps missions. "}
+              <span className="text-foreground">{language === "fr" ? "Actuellement disponible" : "Currently available"}</span>.
             </p>
           </TerminalCard>
         </div>
@@ -131,7 +142,7 @@ export default function Contact() {
                   <input
                     {...form.register("name")}
                     className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all font-mono placeholder:text-muted-foreground/30"
-                    placeholder='John Doe'
+                    placeholder={t("contact.placeholder.name")}
                   />
                   {form.formState.errors.name && (
                     <p className="text-destructive text-xs font-mono">{form.formState.errors.name.message}</p>
@@ -143,7 +154,7 @@ export default function Contact() {
                   <input
                     {...form.register("email")}
                     className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all font-mono placeholder:text-muted-foreground/30"
-                    placeholder='john@example.com'
+                    placeholder={t("contact.placeholder.email")}
                   />
                   {form.formState.errors.email && (
                     <p className="text-destructive text-xs font-mono">{form.formState.errors.email.message}</p>
@@ -157,7 +168,7 @@ export default function Contact() {
                   {...form.register("message")}
                   rows={5}
                   className="w-full bg-background/50 border border-border rounded-lg px-4 py-3 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all font-mono placeholder:text-muted-foreground/30 resize-none"
-                  placeholder='echo "Hello World"'
+                  placeholder={t("contact.placeholder.message")}
                 />
                 {form.formState.errors.message && (
                   <p className="text-destructive text-xs font-mono">{form.formState.errors.message.message}</p>
@@ -172,16 +183,11 @@ export default function Contact() {
                 {sendMessage.isPending ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    Encrypting...
-                  </>
-                ) : sendMessage.isSuccess ? (
-                  <>
-                    <CheckCircle2 className="w-5 h-5" />
-                    Sent Successfully
+                    {t("contact.sending")}
                   </>
                 ) : (
                   <>
-                    Execute Transmission
+                    {t("contact.send")}
                     <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </>
                 )}
