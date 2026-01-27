@@ -74,7 +74,7 @@ export default function Home() {
             </h3>
             <div className="flex gap-4">
               <a 
-                href="/CVBrahimHamidBong.pdf" 
+                href="/CVBrahimHamidBong_FR.pdf" 
                 target="_blank"
                 className="group flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-primary transition-colors"
               >
@@ -83,7 +83,7 @@ export default function Home() {
               </a>
               <span className="text-border">|</span>
               <a 
-                href="/CVBrahimHamidBong.pdf" 
+                href="/CVBrahimHamidBong_EN.pdf" 
                 target="_blank"
                 className="group flex items-center gap-2 text-sm font-mono text-muted-foreground hover:text-secondary transition-colors"
               >
