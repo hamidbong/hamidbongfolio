@@ -72,8 +72,21 @@ const MOCK_PROJECTS: Project[] = [
     repoUrl: "https://github.com/hamidbong/devops-project.git",
     featured: true
   },
-  {
+{
     id: 2,
+    title: { fr: "Mise en place d'une solution de Cloud privé dans un environnement sécurisé",
+      en: "Implementation of a private Cloud solution in a secure environment" },
+    description: { fr: "Conception et mise en œuvre d'une infrastructure de cloud privé sécurisée avec une défense en profondeur, incluant la détection d'intrusions hôtes et réseau, le filtrage des paquets, et la surveillance en temps réel.",
+      en: "Design and implementation of a secure private cloud infrastructure with defense in depth, including host and network intrusion detection, packet filtering, and real-time monitoring." },
+    techStack: ["Proxmox", "Linux", "Containerization(LXC)", "Wazuh", "Suricata", "Firewall(PFsense)", "Prometheus", "Grafana", "DNS(Bind9)", "Backup(Urbackup)", "WebServer(NGINX)", "MailServer(Postfix)"],
+    imageUrl: "/projects/what-is-cloud-security.avif",
+    images: ["/projects/what-is-cloud-security.avif", "/projects/proxmox_int.png", "/projects/pfsense.png", "/projects/grafana_prometheus.png"],
+    repoUrl: "",
+    featured: true
+  },
+
+  {
+    id: 3,
     title: { fr: "Déploiement d'Application Web Hautement Disponible avec Ansible et NGINX",
       en: "Highly Available Web Application Deployment with Ansible and NGINX" },
     description: { fr: "Automatisation du déploiement d'une application web avec Ansible, NGINX et Bind9 pour une architecture hautement disponible",
@@ -86,6 +99,8 @@ const MOCK_PROJECTS: Project[] = [
   }
 
 ];
+
+
 
 const MOCK_SKILLS: Skill[] = [
   { id: 1, name: "Kubernetes", category: "DevOps", proficiency: 65, icon: "Container" },
