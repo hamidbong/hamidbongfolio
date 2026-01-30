@@ -1,12 +1,19 @@
+import { useState } from "react";
 import { useProjects } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
-import { Github, ExternalLink, Code2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { Github, ExternalLink, Code2, Plus } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/use-language";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 export default function Projects() {
   const { data: projects, isLoading } = useProjects();
   const { t, language } = useLanguage();
+  const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
+  const toggleExpand = (id: number) => {
+    setExpandedProjects(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   if (isLoading) {
     return (
@@ -40,15 +47,51 @@ export default function Projects() {
             key={project.id} 
             title={`~/projects/${project.title[language].toLowerCase().replace(/\s+/g, '-')}`}
             delay={idx * 0.1}
-            className="h-full flex flex-col"
+            className="h-full flex flex-col group"
           >
-            {project.imageUrl && (
-              <div className="mb-6 rounded-lg overflow-hidden border border-border/50 group">
-                <img 
-                  src={project.imageUrl} 
-                  alt={project.title[language]}
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" 
-                />
+            {(project.imageUrl || project.images) && (
+              <div className="mb-6 space-y-4">
+                <div className="rounded-lg overflow-hidden border border-border/50 bg-muted/20 aspect-video relative">
+                  <img 
+                    src={project.imageUrl || (project.images?.[0])} 
+                    alt={project.title[language]}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                  />
+                </div>
+                {project.images && project.images.length > 1 && (
+                  <div className="space-y-4">
+                    <AnimatePresence>
+                      {expandedProjects[project.id] && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="grid grid-cols-2 gap-2 overflow-hidden"
+                        >
+                          {project.images.slice(1).map((img, i) => (
+                            <div key={i} className="rounded-lg overflow-hidden border border-border/50 bg-muted/20 aspect-video">
+                              <img 
+                                src={img} 
+                                alt={`${project.title[language]} ${i + 2}`}
+                                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                              />
+                            </div>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                    
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="w-full gap-2 font-mono text-xs hover:text-primary border border-dashed border-border/50"
+                      onClick={() => toggleExpand(project.id)}
+                    >
+                      <Plus className={cn("w-3 h-3 transition-transform duration-300", expandedProjects[project.id] && "rotate-45")} />
+                      {expandedProjects[project.id] ? (language === "fr" ? "Voir moins" : "View less") : (language === "fr" ? "Voir plus d'images" : "View more images")}
+                    </Button>
+                  </div>
+                )}
               </div>
             )}
 

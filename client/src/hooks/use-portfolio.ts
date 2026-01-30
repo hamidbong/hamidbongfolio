@@ -8,6 +8,7 @@ export interface Project {
   repoUrl?: string;
   demoUrl?: string;
   imageUrl?: string;
+  images?: string[];
   featured?: boolean;
 }
 
@@ -66,6 +67,8 @@ const MOCK_PROJECTS: Project[] = [
       "WAF (ModSecurity)",
       "Prometheus & Grafana"
     ],
+    imageUrl: "/projects/Legacy-CI-CD-pipeline-in-DevOps.png",
+    images: ["/projects/Legacy-CI-CD-pipeline-in-DevOps.png", "/projects/cicd-conception.png", "/projects/openstack_dashboard.png","/projects/Grafana_cluster.png"],
     repoUrl: "https://github.com/hamidbong/devops-project.git",
     featured: true
   },
@@ -76,6 +79,8 @@ const MOCK_PROJECTS: Project[] = [
     description: { fr: "Automatisation du déploiement d'une application web avec Ansible, NGINX et Bind9 pour une architecture hautement disponible",
       en: "Automated deployment of a web application with Ansible, NGINX, and Bind9 for a highly available architecture" },
     techStack: ["Ansible", "NGINX", "Bind9", "Linux"],
+    imageUrl: "/projects/ansible_terraform.png",
+    images: ["/projects/ansible_terraform.png"],
     repoUrl: "https://github.com/hamidbong/ansible-loadbalancer.git",
     featured: true
   }
