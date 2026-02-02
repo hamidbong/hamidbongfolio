@@ -1,12 +1,18 @@
 import { useSkills, useExperience, useEducation, type Skill } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
 import { motion } from "framer-motion";
-import { Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu, GraduationCap, Download } from "lucide-react";
+import { 
+  Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu, 
+  GraduationCap, Download, Box, Workflow, Settings, GitBranch,
+  SearchCode, ShieldCheck, Bug, Container, Coffee, Eye, Activity, ShieldAlert
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/use-language";
 
 const icons: Record<string, any> = {
-  Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu
+  Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu,
+  Box, Workflow, Settings, GitBranch, SearchCode, ShieldCheck, Bug, Container,
+  Coffee, Eye, Activity, ShieldAlert
 };
 
 export default function Skills() {
@@ -50,27 +56,38 @@ export default function Skills() {
               </h3>
             </div>
             
-            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {categorySkills.map((skill) => {
                 const Icon = skill.icon && icons[skill.icon] ? icons[skill.icon] : Code;
                 return (
-                  <div key={skill.id} className="space-y-2">
-                    <div className="flex items-center justify-between text-sm font-medium">
-                      <div className="flex items-center gap-2">
-                        <Icon className="w-4 h-4 text-muted-foreground" />
-                        <span>{skill.name}</span>
+                  <motion.div 
+                    key={skill.id} 
+                    whileHover={{ y: -2 }}
+                    className="p-4 rounded-xl bg-background/50 border border-border/50 hover:border-primary/50 transition-all duration-300 group/skill"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="p-2 rounded-lg bg-muted group-hover/skill:bg-primary/10 transition-colors">
+                        <Icon className="w-5 h-5 text-muted-foreground group-hover/skill:text-primary transition-colors" />
                       </div>
-                      <span className="font-mono text-muted-foreground">{skill.proficiency}%</span>
+                      <span className="font-bold text-sm tracking-tight">{skill.name}</span>
                     </div>
-                    <div className="h-2 bg-muted rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.proficiency}%` }}
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        className="h-full bg-gradient-to-r from-primary to-primary/60 rounded-full"
-                      />
+
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
+                        <span>Proficiency</span>
+                        <span className="text-primary">{skill.proficiency}%</span>
+                      </div>
+                      <div className="h-1.5 bg-muted rounded-full overflow-hidden relative">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: `${skill.proficiency}%` }}
+                          transition={{ duration: 1, ease: "easeOut" }}
+                          className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary/40 rounded-full relative z-10"
+                        />
+                        <div className="absolute inset-0 bg-primary/5 blur-sm" style={{ width: `${skill.proficiency}%` }} />
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>

@@ -100,24 +100,29 @@ const MOCK_PROJECTS: Project[] = [
 
 ];
 
-
-
 const MOCK_SKILLS: Skill[] = [
   { id: 1, name: "Kubernetes", category: "DevOps", proficiency: 65, icon: "Container" },
-  { id: 2, name: "Docker", category: "DevOps", proficiency: 80, icon: "Box" },
-  { id: 3, name: "CI/CD (Jenkins)", category: "DevOps", proficiency: 90, icon: "Workflow" },
+  { id: 2, name: "Docker", category: "DevOps", proficiency: 75, icon: "Box" },
+  { id: 3, name: "CI/CD (Jenkins)", category: "DevOps", proficiency: 80, icon: "Workflow" },
   { id: 4, name: "Penetration Testing", category: "Security", proficiency: 45, icon: "Shield" },
-  { id: 5, name: "Network Security", category: "Security", proficiency: 80, icon: "Lock" },
-  { id: 6, name: "SonarQube", category: "DevSecOps", proficiency: 70, icon: "Lock" },
-  { id: 7, name: "OWASP Check", category: "DevSecOps", proficiency: 70, icon: "Lock" },
-  { id: 8, name: "Trivy", category: "DevSecOps", proficiency: 70, icon: "Lock" },
+  { id: 5, name: "Network Security", category: "Security", proficiency: 75, icon: "Lock" },
+  { id: 6, name: "SonarQube", category: "DevSecOps", proficiency: 70, icon: "SearchCode" },
+  { id: 7, name: "OWASP Check", category: "DevSecOps", proficiency: 70, icon: "ShieldCheck" },
+  { id: 8, name: "Trivy", category: "DevSecOps", proficiency: 70, icon: "Bug" },
   { id: 9, name: "Python", category: "Backend", proficiency: 45, icon: "Code" },
   { id: 10, name: "Terraform", category: "DevOps", proficiency: 70, icon: "Cloud" },
   { id: 11, name: "Ansible", category: "DevOps", proficiency: 85, icon: "Settings" },
   { id: 12, name: "Linux", category: "System", proficiency: 80, icon: "Server" },
-  { id: 13, name: "Git", category: "DevOps", proficiency: 65, icon: "GitBranch" },
-  { id: 14, name: "OpenStack", category: "Cloud", proficiency: 80, icon: "Cloud" }
-
+  { id: 13, name: "Git", category: "DevOps", proficiency: 70, icon: "GitBranch" },
+  { id: 14, name: "OpenStack", category: "Cloud", proficiency: 70, icon: "Cloud" },
+  { id: 15, name: "Java", category: "Backend", proficiency: 55, icon: "Coffee" },
+  { id: 16, name: "Azure", category: "Cloud", proficiency: 40, icon: "Cloud" },
+  { id: 17, name: "Virtualization (KVM)", category: "System", proficiency: 65, icon: "Cpu" },
+  { id: 18, name: "Wazuh & Suricata", category: "Security", proficiency: 75, icon: "Eye" },
+  { id: 19, name: "Grafana & Prometheus", category: "DevOps", proficiency: 75, icon: "Activity" },
+  { id: 20, name: "pfSense", category: "Security", proficiency: 85, icon: "Shield" },
+  { id: 21, name: "Snort", category: "Security", proficiency: 65, icon: "ShieldAlert" },
+  { id: 22, name: "Nagios", category: "Security", proficiency: 60, icon: "Activity" }
 ];
 
 const MOCK_EXPERIENCE: Experience[] = [
