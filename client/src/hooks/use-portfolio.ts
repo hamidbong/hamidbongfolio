@@ -36,6 +36,15 @@ export interface Education {
   description: Record<string, string>;
 }
 
+export interface Certification {
+  id: number;
+  name: Record<string, string>;
+  issuer: string;
+  date: string;
+  link?: string;
+  credlyId?: string;
+}
+
 export interface Publication {
   id: number;
   title: Record<string, string>;
@@ -178,6 +187,33 @@ const MOCK_EDUCATION: Education[] = [
   }
 ];
 
+const MOCK_CERTIFICATIONS: Certification[] = [
+  {
+    id: 1,
+    name: { fr: "Python Essentials 1", en: "Python Essentials 1" },
+    issuer: "ISC2",
+    date: "2025",
+    link: "https://www.credly.com/badges/3925e537-eea3-4e95-a17c-e61c4f6c25d2",
+    credlyId: "3925e537-eea3-4e95-a17c-e61c4f6c25d2"
+  },
+  {
+    id: 2,
+    name: { fr: "JavaScript Essentials 1", en: "JavaScript Essentials 1" },
+    issuer: "Cisco",
+    date: "2024",
+    link: "https://www.credly.com/badges/06a3f7c3-c292-4cf5-89d3-2fb85f21f7bf",
+    credlyId: "06a3f7c3-c292-4cf5-89d3-2fb85f21f7bf"
+  },
+  {
+    id: 3,
+    name: { fr: "Introduction à la cybersécurité", en: "Introduction to Cybersecurity" },
+    issuer: "Cisco",
+    date: "2024",
+    link: "https://www.credly.com/badges/dc274337-e883-4d2f-a21b-d6b5673dc630",
+    credlyId: "dc274337-e883-4d2f-a21b-d6b5673dc630"
+  }
+];
+
 const MOCK_PUBLICATIONS: Publication[] = [
   {
     id: 1,
@@ -253,6 +289,10 @@ export function useExperience() {
 
 export function useEducation() {
   return { data: MOCK_EDUCATION, isLoading: false };
+}
+
+export function useCertifications() {
+  return { data: MOCK_CERTIFICATIONS, isLoading: false };
 }
 
 export function usePublications() {
