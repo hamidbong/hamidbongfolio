@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useProjects } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
-import { Github, ExternalLink, Code2, Plus } from "lucide-react";
+import { Github, ExternalLink, Code2, Plus, X, Maximize2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/use-language";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function Projects() {
   const { data: projects, isLoading } = useProjects();
   const { t, language } = useLanguage();
   const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const toggleExpand = (id: number) => {
     setExpandedProjects(prev => ({ ...prev, [id]: !prev[id] }));
   };
@@ -28,6 +30,41 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen pt-24 pb-32 px-4 max-w-7xl mx-auto">
+      {/* Lightbox */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4 md:p-12 backdrop-blur-sm"
+            onClick={() => setSelectedImage(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="relative max-w-7xl w-full h-full flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Button
+                variant="ghost"
+                size="icon"
+                className="absolute -top-12 right-0 text-white hover:bg-white/10"
+                onClick={() => setSelectedImage(null)}
+              >
+                <X className="w-6 h-6" />
+              </Button>
+              <img
+                src={selectedImage}
+                alt="Project Fullscreen"
+                className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <div className="mb-12 text-center">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
@@ -51,13 +88,20 @@ export default function Projects() {
           >
             {(project.imageUrl || project.images) && (
               <div className="mb-6 space-y-4">
-                <div className="rounded-lg overflow-hidden border border-border/50 bg-muted/20 aspect-video relative">
+                <div 
+                  className="rounded-lg overflow-hidden border border-border/50 bg-muted/20 aspect-video relative cursor-zoom-in group/img"
+                  onClick={() => setSelectedImage(project.imageUrl || (project.images?.[0] ?? null))}
+                >
                   <img 
                     src={project.imageUrl || (project.images?.[0])} 
                     alt={project.title[language]}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105" 
                   />
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
+                    <Maximize2 className="w-8 h-8 text-white/70" />
+                  </div>
                 </div>
+
                 {project.images && project.images.length > 1 && (
                   <div className="space-y-4">
                     <AnimatePresence>
@@ -69,12 +113,19 @@ export default function Projects() {
                           className="grid grid-cols-2 gap-2 overflow-hidden"
                         >
                           {project.images.slice(1).map((img, i) => (
-                            <div key={i} className="rounded-lg overflow-hidden border border-border/50 bg-muted/20 aspect-video">
+                            <div 
+                              key={i} 
+                              className="rounded-lg overflow-hidden border border-border/50 bg-muted/20 aspect-video relative cursor-zoom-in group/subimg"
+                              onClick={() => setSelectedImage(img)}
+                            >
                               <img 
                                 src={img} 
                                 alt={`${project.title[language]} ${i + 2}`}
-                                className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                                className="w-full h-full object-cover group-hover/subimg:scale-110 transition-transform duration-500"
                               />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/subimg:opacity-100 transition-opacity flex items-center justify-center">
+                                <Maximize2 className="w-4 h-4 text-white/70" />
+                              </div>
                             </div>
                           ))}
                         </motion.div>
@@ -99,7 +150,7 @@ export default function Projects() {
               <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                 {project.title[language]}
               </h3>
-              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+              <p className="text-muted-foreground mb-4 line-clamp-3 text-sm leading-relaxed">
                 {project.description[language]}
               </p>
             </div>
