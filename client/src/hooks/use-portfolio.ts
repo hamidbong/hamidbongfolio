@@ -191,7 +191,7 @@ const MOCK_CERTIFICATIONS: Certification[] = [
   {
     id: 1,
     name: { fr: "Python Essentials 1", en: "Python Essentials 1" },
-    issuer: "ISC2",
+    issuer: "Cisco",
     date: "2025",
     link: "https://www.credly.com/badges/3925e537-eea3-4e95-a17c-e61c4f6c25d2",
     credlyId: "3925e537-eea3-4e95-a17c-e61c4f6c25d2"

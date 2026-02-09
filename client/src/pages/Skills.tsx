@@ -188,71 +188,61 @@ export default function Skills() {
           <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
         </motion.h2>
         
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {certifications?.map((cert, idx) => (
             <motion.div
               key={cert.id}
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -8 }}
-              className="relative group h-full"
+              whileHover={{ y: -4 }}
+              className="relative group h-full w-full"
             >
-              {/* Animated Glow Aura */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-[2.5rem] blur-2xl opacity-0 group-hover:opacity-100 transition duration-700" />
+              <div className="absolute -inset-1 bg-gradient-to-tr from-primary/10 to-secondary/5 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition duration-700" />
               
-              <div className="relative h-full flex flex-col bg-card/40 border border-primary/10 rounded-[2.5rem] p-8 backdrop-blur-xl transition-all duration-500 group-hover:border-primary/40 group-hover:bg-card/60 shadow-2xl">
-                {/* Header Decoration */}
-                <div className="absolute top-0 right-0 p-6">
-                  <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center border border-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Award className="w-6 h-6 text-primary/40 group-hover:text-primary transition-colors" />
-                  </div>
+              <div className="relative h-full flex flex-col bg-black/40 border border-white/5 rounded-2xl p-4 backdrop-blur-3xl transition-all duration-500 group-hover:border-primary/20 group-hover:bg-black/50 shadow-lg overflow-hidden">
+                <div className="absolute top-4 left-5 font-mono text-[8px] text-muted-foreground/30 group-hover:text-primary/30 transition-colors">
+                  ID_{cert.id.toString().padStart(3, '0')}
                 </div>
 
-                {/* Badge Visualization */}
-                <div className="relative mb-10 flex justify-center h-[260px] items-center">
-                  <div className="absolute inset-0 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors" />
+                <div className="relative mt-2 mb-6 flex justify-center h-[180px] items-center">
+                  <div className="absolute inset-0 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors" />
                   {cert.credlyId ? (
-                    <div className="scale-[1.3] origin-center group-hover:scale-[1.4] transition-transform duration-700 drop-shadow-[0_0_30px_rgba(34,197,94,0.3)]">
+                    <div className="scale-[0.85] origin-center group-hover:scale-[0.95] transition-transform duration-700 drop-shadow-[0_0_20px_rgba(34,197,94,0.1)] filter contrast-110 brightness-105">
                       <div 
-                        data-iframe-width="150" 
-                        data-iframe-height="270" 
+                        data-iframe-width="120" 
+                        data-iframe-height="240" 
                         data-share-badge-id={cert.credlyId} 
                         data-share-badge-host="https://www.credly.com"
                       />
                     </div>
                   ) : (
-                    <Award className="w-20 h-20 text-primary opacity-20" />
+                    <Award className="w-8 h-8 text-primary opacity-20" />
                   )}
                 </div>
 
-                {/* Info Section */}
-                <div className="space-y-6 text-center">
-                  <div className="space-y-2">
-                    <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-mono uppercase tracking-widest mb-2">
-                      Verified Credential
-                    </div>
-                    <h3 className="text-2xl font-black tracking-tight text-white group-hover:text-primary transition-colors leading-tight">
+                <div className="mt-auto space-y-4">
+                  <div className="space-y-1.5 text-center">
+                    <h3 className="text-sm font-bold tracking-tight text-white group-hover:text-primary transition-colors leading-snug line-clamp-2">
                       {cert.name[language]}
                     </h3>
-                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground font-mono">
-                      <span>{cert.issuer}</span>
-                      <span className="text-primary/30">•</span>
-                      <span>{cert.date}</span>
+                    <div className="flex flex-col items-center gap-0.5">
+                      <span className="text-[10px] font-semibold text-primary/60 tracking-wider uppercase">{cert.issuer}</span>
+                      <span className="text-[8px] font-mono text-muted-foreground/50 uppercase tracking-widest">{cert.date}</span>
                     </div>
                   </div>
 
                   {cert.link && (
                     <Button 
                       variant="ghost" 
-                      size="lg"
-                      className="w-full rounded-2xl bg-white/5 border border-white/5 hover:bg-primary hover:text-primary-foreground group/btn h-12 transition-all duration-300 shadow-lg" 
+                      size="sm"
+                      className="w-full rounded-lg bg-white/5 border border-white/5 hover:bg-primary hover:text-primary-foreground group/btn h-8 transition-all duration-300 relative overflow-hidden" 
                       asChild
                     >
                       <a href={cert.link} target="_blank" rel="noopener noreferrer">
-                        <span className="flex items-center gap-3 font-bold uppercase text-xs tracking-widest">
-                          {language === "fr" ? "Vérifier l'accréditation" : "Verify Accreditation"}
-                          <ExternalLink className="w-4 h-4 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                        <span className="flex items-center gap-2 font-bold uppercase text-[8px] tracking-[0.2em] relative z-10">
+                          {language === "fr" ? "Vérifier" : "Verify"}
+                          <ExternalLink className="w-2.5 h-2.5 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                         </span>
                       </a>
                     </Button>
