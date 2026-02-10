@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useProjects } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
-import { Github, ExternalLink, Code2, Plus, X, Maximize2 } from "lucide-react";
+import { Github, ExternalLink, Code2, Plus, X, Maximize2, ChevronDown, ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
@@ -12,9 +12,14 @@ export default function Projects() {
   const { t, language } = useLanguage();
   const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({});
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [expandedDesc, setExpandedDesc] = useState<Record<number, boolean>>({});
 
   const toggleExpand = (id: number) => {
     setExpandedProjects(prev => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  const toggleDesc = (id: number) => {
+    setExpandedDesc(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   if (isLoading) {
@@ -139,23 +144,49 @@ export default function Projects() {
                       onClick={() => toggleExpand(project.id)}
                     >
                       <Plus className={cn("w-3 h-3 transition-transform duration-300", expandedProjects[project.id] && "rotate-45")} />
-                      {expandedProjects[project.id] ? (language === "fr" ? "Voir moins" : "View less") : (language === "fr" ? "Voir plus d'images" : "View more images")}
+                      {expandedProjects[project.id] ? (language === "fr" ? "Voir moins d'images" : "View less images") : (language === "fr" ? "Voir plus d'images" : "View more images")}
                     </Button>
                   </div>
                 )}
               </div>
             )}
 
-            <div className="flex-1">
+            <div className="flex-1 flex flex-col">
               <h3 className="text-xl font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
                 {project.title[language]}
               </h3>
-              <p className="text-muted-foreground mb-4 line-clamp-3 text-sm leading-relaxed">
-                {project.description[language]}
-              </p>
+              <div className="relative">
+                <p 
+                  id={`project-desc-${project.id}`}
+                  className={cn(
+                    "text-muted-foreground mb-2 text-sm leading-relaxed transition-all duration-300",
+                    !expandedDesc[project.id] && "line-clamp-3"
+                  )}
+                >
+                  {project.description[language]}
+                </p>
+                {project.description[language].length > 130 && (
+                  <button
+                    onClick={() => toggleDesc(project.id)}
+                    className="text-primary text-xs font-mono hover:underline flex items-center gap-1 mb-4"
+                  >
+                    {expandedDesc[project.id] ? (
+                      <>
+                        <ChevronUp className="w-3 h-3" />
+                        {language === "fr" ? "Réduire" : "Show less"}
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="w-3 h-3" />
+                        {language === "fr" ? "Lire la suite" : "Read more"}
+                      </>
+                    )}
+                  </button>
+                )}
+              </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 mt-auto">
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((tech) => (
                   <span 
