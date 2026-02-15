@@ -6,10 +6,11 @@ import {
   Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu, 
   GraduationCap, Download, Box, Workflow, Settings, GitBranch,
   SearchCode, ShieldCheck, Bug, Container, Coffee, Eye, Activity, ShieldAlert,
-  Award, ExternalLink
+  Award, ExternalLink, Briefcase, Layers, ArrowRight, Github
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/use-language";
+import { Link, useLocation } from "wouter";
 
 const icons: Record<string, any> = {
   Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu,
@@ -23,6 +24,7 @@ export default function Skills() {
   const { data: education, isLoading: eduLoading } = useEducation();
   const { data: certifications, isLoading: certsLoading } = useCertifications();
   const { t, language } = useLanguage();
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -42,6 +44,11 @@ export default function Skills() {
     acc[skill.category].push(skill);
     return acc;
   }, {} as Record<string, Skill[]>);
+
+  const handleProjectLink = (projectId: number) => {
+    setLocation("/projects");
+    window.location.hash = `project-${projectId}`;
+  };
 
   return (
     <div className="min-h-screen pt-24 pb-32 px-4 max-w-5xl mx-auto">
@@ -76,28 +83,51 @@ export default function Skills() {
                   <motion.div 
                     key={skill.id} 
                     whileHover={{ y: -2 }}
-                    className="p-4 rounded-xl bg-background/50 border border-border/50 hover:border-primary/50 transition-all duration-300 group/skill"
+                    className="p-5 rounded-xl bg-background/50 border border-border/50 hover:border-primary/50 transition-all duration-300 group/skill flex flex-col h-full"
                   >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-2 rounded-lg bg-muted group-hover/skill:bg-primary/10 transition-colors">
-                        <Icon className="w-5 h-5 text-muted-foreground group-hover/skill:text-primary transition-colors" />
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-muted group-hover/skill:bg-primary/10 transition-colors">
+                          <Icon className="w-5 h-5 text-muted-foreground group-hover/skill:text-primary transition-colors" />
+                        </div>
+                        <span className="font-bold text-sm tracking-tight">{skill.name}</span>
                       </div>
-                      <span className="font-bold text-sm tracking-tight">{skill.name}</span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary/10 text-secondary font-mono border border-secondary/20">
+                        {skill.level[language]}
+                      </span>
                     </div>
 
-                    <div className="space-y-3">
-                      <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
-                        <span>Proficiency</span>
-                        <span className="text-primary">{skill.proficiency}%</span>
+                    <p className="text-xs text-muted-foreground leading-relaxed mb-6 flex-grow">
+                      {skill.description[language]}
+                    </p>
+
+                    <div className="flex items-center justify-between mt-auto pt-4 border-t border-border/30">
+                      <div className="flex items-center gap-1.5 text-[9px] font-mono uppercase tracking-wider text-muted-foreground">
+                        <Layers className="w-3 h-3 text-secondary/60" />
+                        <span>{skill.projectCount} {language === "fr" ? "projets" : "projects"}</span>
                       </div>
-                      <div className="h-1.5 bg-muted rounded-full overflow-hidden relative">
-                        <motion.div 
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.proficiency}%` }}
-                          transition={{ duration: 1, ease: "easeOut" }}
-                          className="h-full bg-gradient-to-r from-primary via-primary/80 to-primary/40 rounded-full relative z-10"
-                        />
-                        <div className="absolute inset-0 bg-primary/5 blur-sm" style={{ width: `${skill.proficiency}%` }} />
+                      
+                      <div className="flex items-center gap-3">
+                        {skill.relatedProjectId && (
+                          <button 
+                            onClick={() => handleProjectLink(skill.relatedProjectId!)}
+                            className="flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider text-primary hover:underline group/link"
+                          >
+                            {language === "fr" ? "Projet" : "Project"}
+                            <ArrowRight className="w-2.5 h-2.5 group-hover/link:translate-x-0.5 transition-transform" />
+                          </button>
+                        )}
+                        {skill.projectLink && (
+                          <a 
+                            href={skill.projectLink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-1 text-[9px] font-mono uppercase tracking-wider text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            <Github className="w-2.5 h-2.5" />
+                            <span>GitHub</span>
+                          </a>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -266,13 +296,13 @@ export default function Skills() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button variant="default" size="lg" className="gap-2 group" asChild>
-              <a href="/CVBrahimHamidBong_FR.pdf" target="_blank">
+              <a href="/CV_CyberStudent_FR.pdf" target="_blank">
                 <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                 {t("cv.french")}
               </a>
             </Button>
             <Button variant="outline" size="lg" className="gap-2 group" asChild>
-              <a href="/CVBrahimHamidBong_EN.pdf" target="_blank">
+              <a href="/CV_CyberStudent_EN.pdf" target="_blank">
                 <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                 {t("cv.english")}
               </a>

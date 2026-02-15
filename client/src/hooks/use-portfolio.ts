@@ -16,8 +16,12 @@ export interface Skill {
   id: number;
   name: string;
   category: string;
-  proficiency: number;
+  level: Record<string, string>;
+  description: Record<string, string>;
+  projectCount: number;
   icon: string;
+  relatedProjectId?: number;
+  projectLink?: string;
 }
 
 export interface Experience {
@@ -110,30 +114,302 @@ const MOCK_PROJECTS: Project[] = [
 ];
 
 const MOCK_SKILLS: Skill[] = [
-  { id: 1, name: "Kubernetes", category: "DevOps", proficiency: 65, icon: "Container" },
-  { id: 2, name: "Docker", category: "DevOps", proficiency: 75, icon: "Box" },
-  { id: 3, name: "CI/CD (Jenkins)", category: "DevOps", proficiency: 80, icon: "Workflow" },
-  { id: 4, name: "SonarQube", category: "DevSecOps", proficiency: 70, icon: "SearchCode" },
-  { id: 5, name: "Penetration Testing", category: "Security", proficiency: 45, icon: "Shield" },
-  { id: 6, name: "Network Security", category: "Security", proficiency: 75, icon: "Lock" },
-  { id: 7, name: "OpenStack", category: "Cloud & System", proficiency: 70, icon: "Cloud" },
-  { id: 8, name: "OWASP Check", category: "DevSecOps", proficiency: 70, icon: "ShieldCheck" },
-  { id: 9, name: "Trivy", category: "DevSecOps", proficiency: 70, icon: "Bug" },
-  { id: 10, name: "Python", category: "Backend", proficiency: 45, icon: "Code" },
-  { id: 11, name: "Terraform", category: "DevOps", proficiency: 70, icon: "Cloud" },
-  { id: 12, name: "Ansible", category: "DevOps", proficiency: 85, icon: "Settings" },
-  { id: 13, name: "Azure", category: "Cloud & System", proficiency: 40, icon: "Cloud" },
-  { id: 14, name: "Linux", category: "Cloud & System", proficiency: 80, icon: "Server" },
-  { id: 15, name: "Virtualization (KVM)", category: "Cloud & System", proficiency: 65, icon: "Cpu" },
-  { id: 16, name: "Git", category: "DevOps", proficiency: 70, icon: "GitBranch" },
-  { id: 17, name: "Java", category: "Backend", proficiency: 55, icon: "Coffee" },
-  { id: 18, name: "Wazuh & Suricata", category: "Security", proficiency: 75, icon: "Eye" },
-  { id: 19, name: "Grafana & Prometheus", category: "DevOps", proficiency: 75, icon: "Activity" },
-  { id: 20, name: "pfSense", category: "Security", proficiency: 85, icon: "Shield" },
-  { id: 21, name: "Snort", category: "Security", proficiency: 65, icon: "ShieldAlert" },
-  { id: 22, name: "Nagios", category: "Security", proficiency: 60, icon: "Activity" },
-  { id: 23, name: "NGINX", category: "DevOps", proficiency: 75, icon: "Server" },
-  { id : 24, name: "ELK Stack", category: "Security", proficiency: 70, icon: "Database" }
+  {
+    id: 1,
+    name: "Kubernetes",
+    category: "DevOps",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Déploiement d’applications microservices avec CI/CD, configuration Ingress NGINX, gestion des ConfigMaps/Secrets, monitoring (Prometheus/Grafana) avec Helm.",
+      en: "Deployment of microservices applications with CI/CD, NGINX Ingress configuration, ConfigMap/Secret management, monitoring (Prometheus/Grafana) with Helm.",
+    },
+    projectCount: 1,
+    icon: "Container",
+    relatedProjectId: 1,
+    projectLink: "https://github.com/hamidbong/devops-project",
+  },
+  {
+    id: 2,
+    name: "Docker",
+    category: "DevOps",
+    level: { fr: "Avancé", en: "Advanced" },
+    description: {
+      fr: "Conteneurisation d'applications complexes, Docker Compose et optimisation d'images et de sécurité.",
+      en: "Containerization of complex applications, Docker Compose, and image optimization and security.",
+    },
+    projectCount: 5,
+    icon: "Box",
+    relatedProjectId: 1,
+  },
+  {
+    id: 3,
+    name: "CI/CD (Jenkins)",
+    category: "DevOps",
+    level: { fr: "Avancé", en: "Advanced" },
+    description: {
+      fr: "Conception de pipelines complexes, automatisation complète du build au déploiement et intégration de tests de sécurité.",
+      en: "Design of complex pipelines, full automation from build to deployment and security testing integration.",
+    },
+    projectCount: 1,
+    icon: "Workflow",
+    relatedProjectId: 1,
+  },
+  {
+    id: 4,
+    name: "SonarQube",
+    category: "DevSecOps",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Analyse statique de code (SAST) et intégration dans les pipelines CI/CD.",
+      en: "Static Application Security Testing (SAST) and CI/CD integration.",
+    },
+    projectCount: 1,
+    icon: "SearchCode",
+    relatedProjectId: 1,
+  },
+  {
+    id: 5,
+    name: "Penetration Testing",
+    category: "Security",
+    level: { fr: "Débutant", en: "Beginner" },
+    description: {
+      fr: "Exploration des vulnérabilités web courantes (OWASP Top 10).",
+      en: "Exploration of common web vulnerabilities (OWASP Top 10).",
+    },
+    projectCount: 4,
+    icon: "Shield",
+    relatedProjectId: 2,
+  },
+  {
+    id: 6,
+    name: "Network Security",
+    category: "Security",
+    level: { fr: "Avancé", en: "Advanced" },
+    description: {
+      fr: "Configuration de pare-feux, IDS/IPS et segmentation réseau.",
+      en: "Firewall configuration, IDS/IPS, and network segmentation.",
+    },
+    projectCount: 10,
+    icon: "Lock",
+    relatedProjectId: 2,
+  },
+  {
+    id: 7,
+    name: "OpenStack",
+    category: "Cloud & System",
+    level: { fr: "Débutant", en: "Beginner" },
+    description: {
+      fr: "Gestion de cloud privé et virtualisation réseau.",
+      en: "Private cloud management and network virtualization.",
+    },
+    projectCount: 2,
+    icon: "Cloud",
+    relatedProjectId: 1,
+  },
+  {
+    id: 8,
+    name: "OWASP Check",
+    category: "DevSecOps",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Analyses de dépendances et scans de vulnérabilités dynamiques.",
+      en: "Dependency analysis and dynamic vulnerability scanning.",
+    },
+    projectCount: 2,
+    icon: "ShieldCheck",
+    relatedProjectId: 1,
+  },
+  {
+    id: 9,
+    name: "Trivy",
+    category: "DevSecOps",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Scan de vulnérabilités pour les images de conteneurs et les systèmes de fichiers.",
+      en: "Vulnerability scanning for container images and filesystems.",
+    },
+    projectCount: 1,
+    icon: "Bug",
+    relatedProjectId: 1,
+  },
+  {
+    id: 10,
+    name: "Python",
+    category: "Backend",
+    level: { fr: "Expert", en: "Expert" },
+    description: {
+      fr: "Python Essentials 1, certifié par Cisco, avec une expertise en scripting.",
+      en: "Python Essentials 1, certified by Cisco, with expertise in scripting.",
+    },
+    projectCount: 3,
+    icon: "Code",
+  },
+  {
+    id: 11,
+    name: "Terraform",
+    category: "DevOps",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Infrastructure as Code (IaC) pour cloud privé OpenStack",
+      en: "Infrastructure as Code (IaC) for private cloud OpenStack.",
+    },
+    projectCount: 1,
+    icon: "Cloud",
+    relatedProjectId: 1,
+  },
+  {
+    id: 12,
+    name: "Ansible",
+    category: "DevOps",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Gestion de configuration et automatisation de déploiement d'infrastructure.",
+      en: "Configuration management and infrastructure deployment automation.",
+    },
+    projectCount: 2,
+    icon: "Settings",
+    relatedProjectId: 1,
+  },
+  {
+    id: 14,
+    name: "Linux",
+    category: "Cloud & System",
+    level: { fr: "Avancé", en: "Advanced" },
+    description: {
+      fr: "Administration système avancée, durcissement OS et scripting shell.",
+      en: "Advanced system administration, OS hardening, and shell scripting.",
+    },
+    projectCount: 20,
+    icon: "Server",
+    relatedProjectId: 1,
+  },
+  {
+    id: 15,
+    name: "Virtualization (KVM)",
+    category: "Cloud & System",
+    level: { fr: "Avancé", en: "Advanced" },
+    description: {
+      fr: "Mise en place et gestion d'infrastructures virtualisées haute performance.",
+      en: "Setup and management of high-performance virtualized infrastructure.",
+    },
+    projectCount: 8,
+    icon: "Cpu",
+  },
+  {
+    id: 16,
+    name: "Git",
+    category: "DevOps",
+    level: { fr: "Expert", en: "Expert" },
+    description: {
+      fr: "Gestion de versions et stratégies de branching.",
+      en: "Version control and branching strategies.",
+    },
+    projectCount: 12,
+    icon: "GitBranch",
+    relatedProjectId: 1,
+  },
+  {
+    id: 17,
+    name: "Java",
+    category: "Backend",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Developpenment d'une application web de location de véhicules.",
+      en: "Development of a vehicle rental web application.",
+    },
+    projectCount: 2,
+    icon: "Coffee",
+    relatedProjectId: 4,
+    projectLink: "https://github.com/hamidbong/MySiteLOCATION.git"
+  },
+  {
+    id: 18,
+    name: "Wazuh & Suricata",
+    category: "Security",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Mise en place de SIEM et détection d'intrusions réseau.",
+      en: "SIEM implementation and network intrusion detection.",
+    },
+    projectCount: 1,
+    icon: "Eye",
+    relatedProjectId: 2,
+  },
+  {
+    id: 19,
+    name: "Grafana & Prometheus",
+    category: "DevOps",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Monitoring et visualisation de métriques système et applicatives.",
+      en: "Monitoring and visualization of system and application metrics.",
+    },
+    projectCount: 2,
+    icon: "Activity",
+    relatedProjectId: 1,
+  },
+  {
+    id: 20,
+    name: "pfSense",
+    category: "Security",
+    level: { fr: "Avancé", en: "Advanced" },
+    description: {
+      fr: "Configuration avancée de pare-feu et routage sécurisé.",
+      en: "Advanced firewall configuration and secure routing.",
+    },
+    projectCount: 4,
+    icon: "Shield",
+    relatedProjectId: 2,
+  },
+  {
+    id: 21,
+    name: "Snort",
+    category: "Security",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Détection d'intrusions et analyse de signatures réseau.",
+      en: "Intrusion detection and network signature analysis.",
+    },
+    projectCount: 1,
+    icon: "ShieldAlert",
+  },
+  {
+    id: 22,
+    name: "Nagios",
+    category: "Security",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Surveillance d'infrastructure et alertes système.",
+      en: "Infrastructure monitoring and system alerting.",
+    },
+    projectCount: 1,
+    icon: "Activity",
+  },
+  {
+    id: 23,
+    name: "NGINX",
+    category: "DevOps",
+    level: { fr: "Avancé", en: "Advanced" },
+    description: {
+      fr: "Configuration de serveurs web, reverse proxy et load balancing.",
+      en: "Web server configuration, reverse proxy, and load balancing.",
+    },
+    projectCount: 6,
+    icon: "Server",
+    relatedProjectId: 1,
+  },
+  {
+    id: 24,
+    name: "ELK Stack",
+    category: "Security",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Analyse centralisée des logs et visualisation de la sécurité.",
+      en: "Centralized log analysis and security visualization.",
+    },
+    projectCount: 2,
+    icon: "Database",
+  },
 ];
 
 const MOCK_EXPERIENCE: Experience[] = [
