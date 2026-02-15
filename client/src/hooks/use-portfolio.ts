@@ -145,7 +145,7 @@ const MOCK_SKILLS: Skill[] = [
     id: 3,
     name: "CI/CD (Jenkins)",
     category: "DevOps",
-    level: { fr: "Avancé", en: "Advanced" },
+    level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Conception de pipelines complexes, automatisation complète du build au déploiement et intégration de tests de sécurité.",
       en: "Design of complex pipelines, full automation from build to deployment and security testing integration.",
@@ -299,7 +299,7 @@ const MOCK_SKILLS: Skill[] = [
     id: 16,
     name: "Git",
     category: "DevOps",
-    level: { fr: "Expert", en: "Expert" },
+    level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Gestion de versions et stratégies de branching.",
       en: "Version control and branching strategies.",
