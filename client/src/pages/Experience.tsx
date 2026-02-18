@@ -199,13 +199,13 @@ export default function Experience() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button variant="default" size="lg" className="gap-2 group" asChild>
-              <a href="/CV_CyberStudent_FR.pdf" target="_blank">
+              <a href="/CVBrahimHamidBong_FR.pdf" target="_blank">
                 <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                 {t("cv.french")}
               </a>
             </Button>
             <Button variant="outline" size="lg" className="gap-2 group" asChild>
-              <a href="/CV_CyberStudent_EN.pdf" target="_blank">
+              <a href="/CVBrahimHamidBong_EN.pdf" target="_blank">
                 <Download className="w-5 h-5 group-hover:translate-y-1 transition-transform" />
                 {t("cv.english")}
               </a>
