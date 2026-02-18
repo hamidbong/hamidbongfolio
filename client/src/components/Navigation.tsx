@@ -1,5 +1,5 @@
 import { Link, useLocation } from "wouter";
-import { Shield, Terminal, User, Mail, Briefcase, BookOpen } from "lucide-react";
+import { Shield, Terminal, Mail, Briefcase, BookOpen, Award } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/hooks/use-language";
@@ -7,12 +7,13 @@ import { LanguageToggle } from "./LanguageToggle";
 
 export function Navigation() {
   const [location] = useLocation();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const links = [
     { href: "/", label: t("nav.home"), icon: Terminal },
     { href: "/projects", label: t("nav.projects"), icon: Briefcase },
     { href: "/skills", label: t("nav.skills"), icon: Shield },
+    { href: "/experience", label: t("nav.experience") || (language === "fr" ? "Parcours" : "Experience"), icon: Award },
     { href: "/publications", label: t("nav.blog"), icon: BookOpen },
     { href: "/contact", label: t("nav.contact"), icon: Mail },
   ];
