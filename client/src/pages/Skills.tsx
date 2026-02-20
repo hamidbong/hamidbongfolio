@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/hooks/use-language";
 import { useLocation } from "wouter";
+import { cn } from "@/lib/utils";
 
 const icons: Record<string, any> = {
   Shield, Server, Terminal, Database, Cloud, Lock, Code, Cpu,
@@ -70,12 +71,19 @@ export default function Skills() {
                   >
                     <div className="flex items-center justify-between gap-3 mb-4">
                       <div className="flex items-center gap-3">
-                        <div className="p-2 rounded-lg bg-muted group-hover/skill:bg-primary/10 transition-colors">
-                          <Icon className="w-5 h-5 text-muted-foreground group-hover/skill:text-primary transition-colors" />
+                        <div className="p-2.5 rounded-lg bg-muted group-hover/skill:bg-primary/10 transition-colors">
+                          <Icon className="w-6 h-6 text-muted-foreground group-hover/skill:text-primary transition-colors" />
                         </div>
                         <span className="font-bold text-sm tracking-tight">{skill.name}</span>
                       </div>
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary/10 text-secondary font-mono border border-secondary/20">
+                      <span className={cn(
+                        "text-[11px] px-2.5 py-1 rounded-full font-mono border transition-colors",
+                        skill.level[language].toLowerCase().includes("advanced") || skill.level[language].toLowerCase().includes("avancé")
+                          ? "bg-green-500/10 text-green-500 border-green-500/20"
+                          : skill.level[language].toLowerCase().includes("intermediate") || skill.level[language].toLowerCase().includes("intermédiaire")
+                          ? "bg-blue-500/10 text-blue-500 border-blue-500/20"
+                          : "bg-purple-500/10 text-purple-500 border-purple-500/20"
+                      )}>
                         {skill.level[language]}
                       </span>
                     </div>
