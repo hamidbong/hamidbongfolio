@@ -120,8 +120,8 @@ const MOCK_SKILLS: Skill[] = [
     category: "DevOps & Cloud",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
-      fr: "Conception d’un cluster Kubernetes pour application microservices avec CI/CD sécurisé, Ingress NGINX, Helm charts, gestion avancée des Secrets et monitoring Prometheus/Grafana.",
-      en: "Design of a Kubernetes cluster for microservices applications with secure CI/CD, NGINX Ingress, Helm charts, advanced Secret management, and Prometheus/Grafana monitoring.",
+      fr: "Conception de clusters Kubernetes sécurisés pour des applications en microservices avec NGINX Ingress, Helm et surveillance Prometheus.",
+      en: "Kubernetes cluster design for secure microservices CI/CD with NGINX Ingress, Helm and Prometheus monitoring.",
     },
     projectCount: 1,
     icon: "Container",
@@ -134,12 +134,13 @@ const MOCK_SKILLS: Skill[] = [
     category: "DevOps & Cloud",
     level: { fr: "Avancé", en: "Advanced" },
     description: {
-      fr: "Conteneurisation d'applications complexes, Docker Compose et optimisation d'images et de sécurité.",
-      en: "Containerization of complex applications, Docker Compose, and image optimization and security.",
+      fr: "Containerisation d'applications complexes, Docker Compose, optimisation des images et sécurité.",
+      en: "Containerized complex applications, Docker Compose, and image optimization and security.",
     },
     projectCount: 5,
     icon: "Box",
     relatedProjectId: 1,
+    projectLink: "https://github.com/hamidbong/devops-project"
   },
   {
     id: 3,
@@ -153,8 +154,8 @@ const MOCK_SKILLS: Skill[] = [
     projectCount: 1,
     icon: "Workflow",
     relatedProjectId: 1,
+    projectLink: "https://github.com/hamidbong/devops-project"
   },
-
   {
     id: 4,
     name: "Git",
@@ -180,6 +181,7 @@ const MOCK_SKILLS: Skill[] = [
     projectCount: 1,
     icon: "SearchCode",
     relatedProjectId: 1,
+    projectLink: "https://github.com/hamidbong/devops-project"
   },
   {
     id: 7,
