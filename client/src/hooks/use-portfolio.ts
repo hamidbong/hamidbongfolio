@@ -117,11 +117,11 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 1,
     name: "Kubernetes",
-    category: "DevOps",
+    category: "DevOps & Cloud",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
-      fr: "Déploiement d’applications microservices avec CI/CD, configuration Ingress NGINX, gestion des ConfigMaps/Secrets, monitoring (Prometheus/Grafana) avec Helm.",
-      en: "Deployment of microservices applications with CI/CD, NGINX Ingress configuration, ConfigMap/Secret management, monitoring (Prometheus/Grafana) with Helm.",
+      fr: "Conception d’un cluster Kubernetes pour application microservices avec CI/CD sécurisé, Ingress NGINX, Helm charts, gestion avancée des Secrets et monitoring Prometheus/Grafana.",
+      en: "Design of a Kubernetes cluster for microservices applications with secure CI/CD, NGINX Ingress, Helm charts, advanced Secret management, and Prometheus/Grafana monitoring.",
     },
     projectCount: 1,
     icon: "Container",
@@ -131,7 +131,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 2,
     name: "Docker",
-    category: "DevOps",
+    category: "DevOps & Cloud",
     level: { fr: "Avancé", en: "Advanced" },
     description: {
       fr: "Conteneurisation d'applications complexes, Docker Compose et optimisation d'images et de sécurité.",
@@ -144,7 +144,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 3,
     name: "CI/CD (Jenkins)",
-    category: "DevOps",
+    category: "DevOps & Cloud",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Conception de pipelines complexes, automatisation complète du build au déploiement et intégration de tests de sécurité.",
@@ -154,8 +154,22 @@ const MOCK_SKILLS: Skill[] = [
     icon: "Workflow",
     relatedProjectId: 1,
   },
+
   {
     id: 4,
+    name: "Git",
+    category: "DevOps & Cloud",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Gestion de versions et stratégies de branching.",
+      en: "Version control and branching strategies.",
+    },
+    projectCount: 12,
+    icon: "GitBranch",
+    relatedProjectId: 1,
+  },
+  {
+    id: 5,
     name: "SonarQube",
     category: "DevSecOps",
     level: { fr: "Intermédiaire", en: "Intermediate" },
@@ -168,9 +182,9 @@ const MOCK_SKILLS: Skill[] = [
     relatedProjectId: 1,
   },
   {
-    id: 5,
+    id: 7,
     name: "Penetration Testing",
-    category: "Security",
+    category: "Security & Networking",
     level: { fr: "Débutant", en: "Beginner" },
     description: {
       fr: "Exploration des vulnérabilités web courantes (OWASP Top 10).",
@@ -181,9 +195,9 @@ const MOCK_SKILLS: Skill[] = [
     relatedProjectId: 2,
   },
   {
-    id: 6,
+    id: 8,
     name: "Network Security",
-    category: "Security",
+    category: "Security & Networking",
     level: { fr: "Avancé", en: "Advanced" },
     description: {
       fr: "Configuration de pare-feux, IDS/IPS et segmentation réseau.",
@@ -194,10 +208,36 @@ const MOCK_SKILLS: Skill[] = [
     relatedProjectId: 2,
   },
   {
-    id: 7,
+    id: 9,
+    name: "Terraform",
+    category: "DevOps & Cloud",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Infrastructure as Code (IaC) pour cloud privé OpenStack",
+      en: "Infrastructure as Code (IaC) for private cloud OpenStack.",
+    },
+    projectCount: 1,
+    icon: "Cloud",
+    relatedProjectId: 1,
+  },
+  {
+    id: 10,
+    name: "Ansible",
+    category: "DevOps & Cloud",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
+    description: {
+      fr: "Gestion de configuration et automatisation de déploiement d'infrastructure.",
+      en: "Configuration management and infrastructure deployment automation.",
+    },
+    projectCount: 2,
+    icon: "Settings",
+    relatedProjectId: 1,
+  },
+  {
+    id: 11,
     name: "OpenStack",
-    category: "Cloud & System",
-    level: { fr: "Débutant", en: "Beginner" },
+    category: "DevOps & Cloud",
+    level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Gestion de cloud privé et virtualisation réseau.",
       en: "Private cloud management and network virtualization.",
@@ -207,8 +247,8 @@ const MOCK_SKILLS: Skill[] = [
     relatedProjectId: 1,
   },
   {
-    id: 8,
-    name: "OWASP Check",
+    id: 12,
+    name: "OWASP Dependency Check",
     category: "DevSecOps",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
@@ -220,7 +260,7 @@ const MOCK_SKILLS: Skill[] = [
     relatedProjectId: 1,
   },
   {
-    id: 9,
+    id: 13,
     name: "Trivy",
     category: "DevSecOps",
     level: { fr: "Intermédiaire", en: "Intermediate" },
@@ -233,10 +273,10 @@ const MOCK_SKILLS: Skill[] = [
     relatedProjectId: 1,
   },
   {
-    id: 10,
+    id: 14,
     name: "Python",
     category: "Backend",
-    level: { fr: "Expert", en: "Expert" },
+    level: { fr: "Débutant", en: "Beginner" },
     description: {
       fr: "Python Essentials 1, certifié par Cisco, avec une expertise en scripting.",
       en: "Python Essentials 1, certified by Cisco, with expertise in scripting.",
@@ -245,35 +285,9 @@ const MOCK_SKILLS: Skill[] = [
     icon: "Code",
   },
   {
-    id: 11,
-    name: "Terraform",
-    category: "DevOps",
-    level: { fr: "Intermédiaire", en: "Intermediate" },
-    description: {
-      fr: "Infrastructure as Code (IaC) pour cloud privé OpenStack",
-      en: "Infrastructure as Code (IaC) for private cloud OpenStack.",
-    },
-    projectCount: 1,
-    icon: "Cloud",
-    relatedProjectId: 1,
-  },
-  {
-    id: 12,
-    name: "Ansible",
-    category: "DevOps",
-    level: { fr: "Intermédiaire", en: "Intermediate" },
-    description: {
-      fr: "Gestion de configuration et automatisation de déploiement d'infrastructure.",
-      en: "Configuration management and infrastructure deployment automation.",
-    },
-    projectCount: 2,
-    icon: "Settings",
-    relatedProjectId: 1,
-  },
-  {
-    id: 14,
+    id: 15,
     name: "Linux",
-    category: "Cloud & System",
+    category: "DevOps & Cloud",
     level: { fr: "Avancé", en: "Advanced" },
     description: {
       fr: "Administration système avancée, durcissement OS et scripting shell.",
@@ -284,9 +298,9 @@ const MOCK_SKILLS: Skill[] = [
     relatedProjectId: 1,
   },
   {
-    id: 15,
+    id: 16,
     name: "Virtualization (KVM)",
-    category: "Cloud & System",
+    category: "DevOps & Cloud",
     level: { fr: "Avancé", en: "Advanced" },
     description: {
       fr: "Mise en place et gestion d'infrastructures virtualisées haute performance.",
@@ -294,19 +308,6 @@ const MOCK_SKILLS: Skill[] = [
     },
     projectCount: 8,
     icon: "Cpu",
-  },
-  {
-    id: 16,
-    name: "Git",
-    category: "DevOps",
-    level: { fr: "Intermédiaire", en: "Intermediate" },
-    description: {
-      fr: "Gestion de versions et stratégies de branching.",
-      en: "Version control and branching strategies.",
-    },
-    projectCount: 12,
-    icon: "GitBranch",
-    relatedProjectId: 1,
   },
   {
     id: 17,
@@ -325,7 +326,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 18,
     name: "Wazuh & Suricata",
-    category: "Security",
+    category: "Security & Networking",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Mise en place de SIEM et détection d'intrusions réseau.",
@@ -338,7 +339,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 19,
     name: "Grafana & Prometheus",
-    category: "DevOps",
+    category: "DevOps & Cloud",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Monitoring et visualisation de métriques système et applicatives.",
@@ -351,7 +352,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 20,
     name: "pfSense",
-    category: "Security",
+    category: "Security & Networking",
     level: { fr: "Avancé", en: "Advanced" },
     description: {
       fr: "Configuration avancée de pare-feu et routage sécurisé.",
@@ -364,7 +365,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 21,
     name: "Snort",
-    category: "Security",
+    category: "Security & Networking",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Détection d'intrusions et analyse de signatures réseau.",
@@ -376,7 +377,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 22,
     name: "Nagios",
-    category: "Security",
+    category: "Security & Networking",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Surveillance d'infrastructure et alertes système.",
@@ -388,7 +389,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 23,
     name: "NGINX",
-    category: "DevOps",
+    category: "DevOps & Cloud",
     level: { fr: "Avancé", en: "Advanced" },
     description: {
       fr: "Configuration de serveurs web, reverse proxy et load balancing.",
@@ -401,7 +402,7 @@ const MOCK_SKILLS: Skill[] = [
   {
     id: 24,
     name: "ELK Stack",
-    category: "Security",
+    category: "Security & Networking",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
       fr: "Analyse centralisée des logs et visualisation de la sécurité.",
