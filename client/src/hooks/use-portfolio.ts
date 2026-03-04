@@ -109,6 +109,31 @@ const MOCK_PROJECTS: Project[] = [
     images: ["/projects/ansible_terraform.png"],
     repoUrl: "https://github.com/hamidbong/ansible-loadbalancer.git",
     featured: true
+  },
+  {
+    id: 4,
+    title: { 
+      fr: "MySiteLOCATION – Application Web de Gestion de Locations",
+      en: "MySiteLOCATION – Property Rental Management Web Application"
+    },
+    description: { 
+      fr: "Application web développée en Java (Servlets & JSP) suivant l’architecture MVC avec DAO. Elle permet la gestion des utilisateurs, la consultation de biens immobiliers et la réservation en ligne avec gestion des statuts.",
+      en: "Java-based web application built with Servlets and JSP following the MVC architecture with DAO pattern. It enables user management, property browsing, and online reservation handling with status management."
+    },
+    techStack: [
+      "Java",
+      "Servlets",
+      "JSP",
+      "JDBC",
+      "MySQL",
+      "Tomcat",
+      "MVC",
+      "DAO Pattern"
+    ],
+    imageUrl: "/projects/car-rentals.webp",
+    images: ["/projects/car-rentals.webp"],
+    repoUrl: "https://github.com/hamidbong/MySiteLOCATION.git",
+    featured: true
   }
 
 ];
