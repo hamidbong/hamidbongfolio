@@ -94,7 +94,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="text-xs font-mono text-muted-foreground">var_phone</p>
-                  <p className="font-bold">+216 48 031 231</p>
+                  <p className="font-bold">+216 68 731 198</p>
                 </div>
               </div>
 
