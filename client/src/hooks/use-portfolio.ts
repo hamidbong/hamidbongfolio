@@ -131,7 +131,7 @@ const MOCK_PROJECTS: Project[] = [
       "DAO Pattern"
     ],
     imageUrl: "/projects/car-rentals.webp",
-    images: ["/projects/car-rentals.webp"],
+    images: ["/projects/car-rentals.webp", "/projects/Accueil_MySiteLocation.png", "/projects/Login_MySiteLocation.png", "/projects/CreateAccount_MySiteLocation.png", "/projects/Update_MySiteLocation.png"],
     repoUrl: "https://github.com/hamidbong/MySiteLOCATION.git",
     featured: true
   }
