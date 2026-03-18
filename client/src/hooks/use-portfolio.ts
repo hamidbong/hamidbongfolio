@@ -112,18 +112,6 @@ const MOCK_PROJECTS: Project[] = [
     featured: true
   },
   {
-    id: 5,
-    title: { fr: "APPGEST – Simple hospital management app in Bash with a Zenity GUI.",
-      en: "APPGEST – Simple hospital management app in Bash with a Zenity GUI." },
-    description: { fr: "Application de gestion hospitalière simple en Bash avec une interface graphique Zenity.",
-      en: "APPGEST – Simple hospital management app in Bash with a Zenity GUI." },
-    techStack: ["Bash", "Zenity"],
-    imageUrl: "/projects/hospital-management-software.jpg",
-    images: ["/projects/hospital-management-software.jpg"],
-    repoUrl: "https://github.com/hamidbong/APPGEST.git",
-    featured: true
-  },
-  {
     id: 4,
     title: { 
       fr: "MySiteLOCATION – Application Web de Gestion de Locations",
@@ -146,6 +134,18 @@ const MOCK_PROJECTS: Project[] = [
     imageUrl: "/projects/car-rentals.webp",
     images: ["/projects/car-rentals.webp", "/projects/Accueil_MySiteLocation.png", "/projects/Login_MySiteLocation.png", "/projects/CreateAccount_MySiteLocation.png", "/projects/Update_MySiteLocation.png"],
     repoUrl: "https://github.com/hamidbong/MySiteLOCATION.git",
+    featured: true
+  },
+  {
+    id: 5,
+    title: { fr: "APPGEST – Ssimple application de gestion hospitalière en Bash avec une interface graphique Zenity.",
+      en: "APPGEST – Simple hospital management app in Bash with a Zenity GUI." },
+    description: { fr: "Application de gestion hospitalière simple en Bash avec une interface graphique Zenity.",
+      en: "APPGEST – Simple hospital management app in Bash with a Zenity GUI." },
+    techStack: ["Bash", "Zenity"],
+    imageUrl: "/projects/hospital-management-software.jpg",
+    images: ["/projects/hospital-management-software.jpg"],
+    repoUrl: "https://github.com/hamidbong/APPGEST.git",
     featured: true
   }
 
