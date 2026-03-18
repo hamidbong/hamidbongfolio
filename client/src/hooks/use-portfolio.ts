@@ -1,3 +1,4 @@
+import { Description } from "@radix-ui/react-toast";
 import { useMemo } from "react";
 
 export interface Project {
@@ -108,6 +109,18 @@ const MOCK_PROJECTS: Project[] = [
     imageUrl: "/projects/ansible_terraform.png",
     images: ["/projects/ansible_terraform.png"],
     repoUrl: "https://github.com/hamidbong/ansible-loadbalancer.git",
+    featured: true
+  },
+  {
+    id: 5,
+    title: { fr: "APPGEST – Simple hospital management app in Bash with a Zenity GUI.",
+      en: "APPGEST – Simple hospital management app in Bash with a Zenity GUI." },
+    description: { fr: "Application de gestion hospitalière simple en Bash avec une interface graphique Zenity.",
+      en: "APPGEST – Simple hospital management app in Bash with a Zenity GUI." },
+    techStack: ["Bash", "Zenity"],
+    imageUrl: "/projects/hospital-management-software.jpg",
+    images: ["/projects/hospital-management-software.jpg"],
+    repoUrl: "https://github.com/hamidbong/APPGEST.git",
     featured: true
   },
   {
