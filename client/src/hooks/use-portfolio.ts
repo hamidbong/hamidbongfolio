@@ -138,7 +138,7 @@ const MOCK_PROJECTS: Project[] = [
   },
   {
     id: 5,
-    title: { fr: "APPGEST – Ssimple application de gestion hospitalière en Bash avec une interface graphique Zenity.",
+    title: { fr: "APPGEST – Simple application de gestion hospitalière en Bash avec un GUI Zenity",
       en: "APPGEST – Simple hospital management app in Bash with a Zenity GUI." },
     description: { fr: "Application de gestion hospitalière simple en Bash avec une interface graphique Zenity.",
       en: "APPGEST – Simple hospital management app in Bash with a Zenity GUI." },
@@ -147,7 +147,23 @@ const MOCK_PROJECTS: Project[] = [
     images: ["/projects/hospital-management-software.jpg"],
     repoUrl: "https://github.com/hamidbong/APPGEST.git",
     featured: true
-  }
+  },
+  {
+  id: 6,
+  title: {
+    fr: "APPGEST – Application de gestion hospitalière en Bash avec interface Zenity",
+    en: "APPGEST – Hospital management app in Bash with a Zenity GUI"
+  },
+  description: {
+    fr: "Développement d'une application desktop légère en Bash avec Zenity pour gérer les patients, le personnel soignant, les salles et la facturation. Le projet est structuré en scripts modulaires avec persistance locale sur fichiers texte.",
+    en: "Built a lightweight desktop app in Bash with a Zenity GUI to manage patients, healthcare staff, rooms, and billing. The project uses modular scripts with local text-file persistence."
+  },
+  techStack: ["Bash", "Zenity", "Linux"],
+  imageUrl: "/projects/hospital-management-software.jpg",
+  images: ["/projects/hospital-management-software.jpg"],
+  repoUrl: "https://github.com/hamidbong/APPGEST.git",
+  featured: true
+}
 
 ];
 
