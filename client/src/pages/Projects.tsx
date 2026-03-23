@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useProjects } from "@/hooks/use-portfolio";
 import { TerminalCard } from "@/components/TerminalCard";
-import { Github, ExternalLink, Code2, Plus, X, Maximize2, ChevronDown, ChevronUp } from "lucide-react";
+import { Github, ExternalLink, Code2, Plus, X, Maximize2, ChevronDown, ChevronUp, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
@@ -199,6 +199,22 @@ export default function Projects() {
                     </button>
                   )}
                 </div>
+
+              {project.features && project.features[language] && (
+                <div className="mb-4">
+                  <p className="text-xs font-mono text-primary/70 mb-2 uppercase tracking-wider">
+                    {language === "fr" ? "// Fonctionnalités" : "// Features"}
+                  </p>
+                  <ul className="space-y-1">
+                    {project.features[language].map((feature, i) => (
+                      <li key={i} className="flex items-start gap-2 text-xs text-muted-foreground">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-primary/60 mt-0.5 shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               </div>
 
               <div className="space-y-4 mt-auto">

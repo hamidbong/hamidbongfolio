@@ -6,6 +6,7 @@ export interface Project {
   title: Record<string, string>;
   description: Record<string, string>;
   techStack: string[];
+  features?: Record<string, string[]>;
   repoUrl?: string;
   demoUrl?: string;
   imageUrl?: string;
@@ -113,13 +114,13 @@ const MOCK_PROJECTS: Project[] = [
   },
   {
     id: 4,
-    title: { 
+    title: {
       fr: "MySiteLOCATION – Application Web de Gestion de Locations",
-      en: "MySiteLOCATION – Property Rental Management Web Application"
+      en: "MySiteLOCATION – Property Rental Management Web Application",
     },
-    description: { 
-      fr: "Application web développée en Java (Servlets & JSP) suivant l’architecture MVC avec DAO. Elle permet la gestion des utilisateurs, la consultation de biens immobiliers et la réservation en ligne avec gestion des statuts.",
-      en: "Java-based web application built with Servlets and JSP following the MVC architecture with DAO pattern. It enables user management, property browsing, and online reservation handling with status management."
+    description: {
+      fr: "Application web développée en Java (Servlets & JSP) basée sur l'architecture MVC avec le pattern DAO. Elle permet la gestion des utilisateurs, la consultation de biens immobiliers et la réservation en ligne avec suivi des statuts. Le projet a été conteneurisé avec Docker (multi-stage build sécurisé) et déployé sur Apache Tomcat, intégrant des bonnes pratiques DevOps et de sécurité.",
+      en: "Full-stack Java web application built with Servlets and JSP following MVC architecture and DAO pattern. It enables user management, property browsing, and online reservation with status tracking. The project is containerized with Docker (secure multi-stage build) and deployed on Apache Tomcat, applying DevOps best practices and security measures.",
     },
     techStack: [
       "Java",
@@ -129,12 +130,40 @@ const MOCK_PROJECTS: Project[] = [
       "MySQL",
       "Tomcat",
       "MVC",
-      "DAO Pattern"
+      "DAO Pattern",
+      "Docker && Docker Compose",
+      "DevOps",
+      "Security Best Practices",
     ],
+    features: {
+      fr: [
+        "Authentification et gestion des utilisateurs",
+        "Consultation des biens immobiliers",
+        "Réservation en ligne avec gestion des statuts",
+        "Création, modification et suppression de données",
+        "Conteneurisation Docker et déploiement Tomcat",
+        "Healthcheck pour monitoring de l'application",
+      ],
+      en: [
+        "User authentication and management",
+        "Property browsing",
+        "Online reservation with status management",
+        "Create, update, delete data",
+        "Docker containerization and Tomcat deployment",
+        "Healthcheck for application monitoring",
+      ],
+    },
     imageUrl: "/projects/car-rentals.webp",
-    images: ["/projects/car-rentals.webp", "/projects/Accueil_MySiteLocation.png", "/projects/Login_MySiteLocation.png", "/projects/CreateAccount_MySiteLocation.png", "/projects/Update_MySiteLocation.png"],
+    images: [
+      "/projects/car-rentals.webp",
+      "/projects/Login_MySiteLocation.png",
+      "/projects/Accueil_MySiteLocation.png",
+      "/projects/lists-products.png",
+      "/projects/lists_Reservations.png",
+      "/projects/Update_MySiteLocation.png"
+    ],
     repoUrl: "https://github.com/hamidbong/MySiteLOCATION.git",
-    featured: true
+    featured: true,
   },
   {
     id: 5,
