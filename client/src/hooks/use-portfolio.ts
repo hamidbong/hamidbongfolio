@@ -63,37 +63,68 @@ export interface Publication {
 
 const MOCK_PROJECTS: Project[] = [
   {
-    id: 1,
-    title: { fr: "CI/CD DevSecOps sécurisé sur un cloud OpenStack privé", en: "Secure DevSecOps CI/CD on Private OpenStack Cloud" },
-    description: { 
-      fr: "Conception et mise en œuvre d'un pipeline CI/CD sécurisé pour une application basée sur des microservices déployée sur un cloud privé OpenStack (DevStack), intégrant l'analyse statique de la sécurité des applications (SAST) automatisée, l'analyse des dépendances, les analyses de sécurité des conteneurs et le déploiement Kubernetes.",
-      en: "Design and implementation of a secure CI/CD pipeline for a microservices-based application deployed on a private OpenStack cloud (DevStack), integrating automated SAST, Dependency Scanning, container security scans, and Kubernetes deployment."},
+    id: 7,
+    title: {
+      fr: "Écosystème DevSecOps : CI/CD Sécurisé sur Cloud OpenStack Privé",
+      en: "DevSecOps Ecosystem: Secure CI/CD on Private OpenStack Cloud"
+    },
+    description: {
+      fr: "Conception et mise en œuvre d'une plateforme DevSecOps complète intégrant un pipeline CI/CD sécurisé pour le déploiement automatisé d'une application en microservices sur une infrastructure IaaS OpenStack. La sécurité est traitée comme un composant de premier plan avec une approche Shift Left Security.",
+      en: "Design and implementation of a complete DevSecOps platform integrating a secure CI/CD pipeline for automated deployment of a microservices application on OpenStack IaaS. Security is treated as a first-class citizen with a Shift Left Security approach."
+    },
     techStack: [
       "OpenStack (DevStack)",
       "Kubernetes",
       "Docker",
       "Helm",
-      "Jenkins CI/CD",
+      "Terraform",
+      "Ansible",
+      "Jenkins",
       "SonarQube (SAST)",
-      "OWASP Check (Dependency Scanning)",
+      "OWASP Dependency Check",
       "Trivy",
-      "NGINX Ingress",
-      "Cert-Manager (SSL/TLS)",
-      "WAF (ModSecurity)",
-      "Prometheus & Grafana"
+      "Security Group Rules",
+      "NGINX Ingress + WAF (ModSecurity)",
+      "SSL/TLS",
+      "Prometheus",
+      "Grafana"
     ],
-    imageUrl: "/projects/Legacy-CI-CD-pipeline-in-DevOps.png",
-    images: ["/projects/Legacy-CI-CD-pipeline-in-DevOps.png", "/projects/cicd-conception.png", "/projects/openstack_dashboard.png","/projects/Grafana_cluster.png"],
+    features: {
+      fr: [
+        "Provisionnement automatisé de l'infrastructure IaaS avec Terraform et Ansible",
+        "Pipeline CI/CD sécurisé incluant SAST (SonarQube), analyse des dépendances (OWASP) et scan d'images (Trivy)",
+        "Orchestration de microservices conteneurisés sur Kubernetes",
+        "Gestion des certificats SSL/TLS",
+        "Sécurisation des flux via NGINX Ingress avec WAF ModSecurity et rate limiting",
+        "Observabilité complète et alerting en temps réel avec Prometheus, Grafana via Helm Charts."
+      ],
+      en: [
+        "Automated IaaS infrastructure provisioning with Terraform and Ansible",
+        "Secure CI/CD pipeline including SAST (SonarQube), dependency scanning (OWASP), and image scanning (Trivy)",
+        "Containerized microservices orchestration on Kubernetes",
+        "Automated SSL/TLS certificate management with Cert-Manager",
+        "Traffic security via NGINX Ingress with ModSecurity WAF, SSL/TLS and rate limiting",
+        "Complete observability and real-time alerting with Prometheus, Grafana via Helm Charts."
+      ]
+    },
     repoUrl: "https://github.com/hamidbong/devops-project.git",
+    imageUrl: "/projects/Legacy-CI-CD-pipeline-in-DevOps.png",
+    images: [
+      "/images/projects/devsecops-main.png",
+      "/projects/Legacy-CI-CD-pipeline-in-DevOps.png", 
+      "/projects/cicd-conception.png", 
+      "/projects/openstack_dashboard.png",
+      "/projects/Grafana_cluster.png"
+    ],
     featured: true
   },
-{
+  {
     id: 2,
     title: { fr: "Mise en place d'une solution de Cloud privé dans un environnement sécurisé",
       en: "Implementation of a private Cloud solution in a secure environment" },
     description: { fr: "Conception et mise en œuvre d'une infrastructure de cloud privé sécurisée avec une défense en profondeur, incluant la détection d'intrusions hôtes et réseau, le filtrage des paquets, et la surveillance en temps réel.",
       en: "Design and implementation of a secure private cloud infrastructure with defense in depth, including host and network intrusion detection, packet filtering, and real-time monitoring." },
-    techStack: ["Proxmox", "Linux", "Containerization(LXC)", "Wazuh", "Suricata", "Firewall(PFsense)", "Prometheus", "Grafana", "DNS(Bind9)", "Backup(Urbackup)", "WebServer(NGINX)", "MailServer(Postfix)"],
+    techStack: ["Proxmox", "Linux", "Containerization(LXC)", "Wazuh", "Suricata", "Firewall(PFsense)", "Security Group Rules", "Network segmentation", "SSL/TLS", "Prometheus", "Grafana", "DNS(Bind9)", "Backup(Urbackup)", "WebServer(NGINX)", "MailServer(Postfix)"],
     imageUrl: "/projects/what-is-cloud-security.avif",
     images: ["/projects/what-is-cloud-security.avif", "/projects/proxmox_int.png", "/projects/pfsense.png", "/projects/grafana_prometheus.png"],
     repoUrl: "",
