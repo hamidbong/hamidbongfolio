@@ -132,7 +132,55 @@ const MOCK_PROJECTS: Project[] = [
   },
 
   {
-    id: 3,
+    id: 3, // Adjust the ID based on your existing project list
+    title: {
+      en: "Distributed 3-Node OpenStack Cloud Deployment",
+      fr: "Déploiement d'un Cloud Privé OpenStack sur Architecture Tri-Nœuds"
+    },
+    description: {
+      en: "A manual, service-by-service deployment of an enterprise OpenStack cloud cluster (1 Controller, 2 Computes) built to master low-level cloud architecture, networking topologies, and distributed troubleshooting without reliance on automated installers.",
+      fr: "Déploiement manuel, service par service, d'un cluster cloud d'entreprise OpenStack (1 Contrôleur, 2 Computes) réalisé pour maîtriser l'architecture cloud bas niveau, les topologies réseau et le troubleshooting distribué sans installateur automatique."
+    },
+    techStack: [
+      "OpenStack",
+      "Ubuntu Server",
+      "KVM/QEMU",
+      "Netplan",
+      "MariaDB",
+      "RabbitMQ",
+      "Linux Bridges",
+      "VXLAN"
+    ],
+    features: {
+      en: [
+        "Distributed 3-node cluster segregation (Management & Provider traffic routing).",
+        "Software-Defined Networking (SDN) layer using Neutron with VXLAN encapsulation.",
+        "Complete tenant environment setup including Private Networks, Routers, and Floating IPs.",
+        "Live instance provisioning (Ubuntu 24.04 Cloud) with verified long-term infrastructure stability.",
+        "Advanced log analysis across microservices for precise inter-service debugging."
+      ],
+      fr: [
+        "Ségrégation d'un cluster distribué à 3 nœuds (Routage des flux Management et Provider).",
+        "Couche de réseau SDN (Software-Defined Networking) via Neutron avec encapsulation VXLAN.",
+        "Environnement client complet : réseaux privés, routeurs virtuels et adresses IP flottantes.",
+        "Provisioning d'instances fonctionnelles (Ubuntu 24.04 Cloud) avec stabilité système vérifiée.",
+        "Analyse avancée des journaux applicatifs (logs) inter-services pour un débogage précis."
+      ]
+    },
+    repoUrl: "https://github.com/hamidbong/openstack-architecture-deployment.git",
+    // demoUrl: "", // Leave commented out or remove if you don't have a public live GUI dashboard link
+    imageUrl: "/projects/openstack-deployment/openstack_manuelle.png", // Path to your main project image or diagram
+    images: [
+      "/projects/openstack-deployment/openstack_manuelle.png","/projects/openstack-deployment/Openstack_dashboard_overview.png",
+      "/projects/openstack-deployment/Instance_Openstack _dashbards.png", "/projects/openstack-deployment/Network_topology_Openstack.png", 
+      "/projects/openstack-deployment/openstack_all_endpoints.png", "/projects/openstack-deployment/openstack_compute_service.png", 
+      "/projects/openstack-deployment/openstack-map-v20240401.png"       // Optional: Terminal CLI verification output screenshot
+    ],
+    featured: true // Set to true to highlight this major project on your homepage
+  },
+
+  {
+    id: 4,
     title: { fr: "Déploiement d'Application Web Hautement Disponible avec Ansible et NGINX",
       en: "Highly Available Web Application Deployment with Ansible and NGINX" },
     description: { fr: "Automatisation du déploiement d'une application web avec Ansible, NGINX et Bind9 pour une architecture hautement disponible",
@@ -144,7 +192,7 @@ const MOCK_PROJECTS: Project[] = [
     featured: true
   },
   {
-    id: 4,
+    id: 5,
     title: {
       fr: "MySiteLOCATION – Application Web de Gestion de Locations",
       en: "MySiteLOCATION – Property Rental Management Web Application",
@@ -197,7 +245,7 @@ const MOCK_PROJECTS: Project[] = [
     featured: true,
   },
   {
-    id: 5,
+    id: 6,
     title: {
       fr: "APPGEST – Application de gestion hospitalière en Bash avec interface Zenity",
       en: "APPGEST – Hospital management app in Bash with a Zenity GUI"
@@ -424,7 +472,7 @@ const MOCK_SKILLS: Skill[] = [
     },
     projectCount: 2,
     icon: "Coffee",
-    relatedProjectId: 4,
+    relatedProjectId: 5,
     projectLink: "https://github.com/hamidbong/MySiteLOCATION.git"
   },
   {
