@@ -391,12 +391,12 @@ const MOCK_SKILLS: Skill[] = [
     category: "DevOps & Cloud",
     level: { fr: "Intermédiaire", en: "Intermediate" },
     description: {
-      fr: "Gestion de cloud privé et virtualisation réseau.",
-      en: "Private cloud management and network virtualization.",
+      fr: "Deployment et gestion de cloud privé et virtualisation réseau.",
+      en: "Deployment and management of private cloud and network virtualization.",
     },
-    projectCount: 2,
+    projectCount: 3,
     icon: "Cloud",
-    relatedProjectId: 1,
+    relatedProjectId: 3,
   },
   {
     id: 12,
