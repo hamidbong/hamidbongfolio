@@ -397,6 +397,7 @@ const MOCK_SKILLS: Skill[] = [
     projectCount: 3,
     icon: "Cloud",
     relatedProjectId: 3,
+    projectLink: "https://github.com/hamidbong/openstack-architecture-deployment.git"
   },
   {
     id: 12,
