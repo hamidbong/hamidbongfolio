@@ -132,51 +132,52 @@ const MOCK_PROJECTS: Project[] = [
   },
 
   {
-    id: 3, // Adjust the ID based on your existing project list
+    id: 7,
     title: {
-      en: "Distributed 3-Node OpenStack Cloud Deployment",
-      fr: "Déploiement d'un Cloud Privé OpenStack sur Architecture Tri-Nœuds"
+      en: "Distributed 4-Node OpenStack Cloud Infrastructure Deployment",
+      fr: "Déploiement d'un Cloud Privé OpenStack sur Architecture à 4 Nœuds"
     },
     description: {
-      en: "A manual, service-by-service deployment of an enterprise OpenStack cloud cluster (1 Controller, 2 Computes) built to master low-level cloud architecture, networking topologies, and distributed troubleshooting without reliance on automated installers.",
-      fr: "Déploiement manuel, service par service, d'un cluster cloud d'entreprise OpenStack (1 Contrôleur, 2 Computes) réalisé pour maîtriser l'architecture cloud bas niveau, les topologies réseau et le troubleshooting distribué sans installateur automatique."
+      en: "A manual, service-by-service deployment of an enterprise OpenStack cloud cluster built to master low-level cloud architecture. Configured separate control, compute, and block storage planes to manage production-ready infrastructure, networking topologies, and persistent volumes without automated scripts.",
+      fr: "Déploiement manuel, service par service, d'un cluster cloud d'entreprise OpenStack conçu pour maîtriser l'architecture bas niveau. Configuration de plans distincts pour le contrôle, le calcul et le stockage par blocs afin de gérer des volumes persistants et des topologies réseau sans scripts automatisés."
     },
     techStack: [
       "OpenStack",
+      "Cinder (Block Storage)",
       "Ubuntu Server",
       "KVM/QEMU",
       "Netplan",
+      "LVM / iSCSI",
       "MariaDB",
       "RabbitMQ",
-      "Linux Bridges",
       "VXLAN"
     ],
     features: {
       en: [
-        "Distributed 3-node cluster segregation (Management & Provider traffic routing).",
-        "Software-Defined Networking (SDN) layer using Neutron with VXLAN encapsulation.",
-        "Complete tenant environment setup including Private Networks, Routers, and Floating IPs.",
-        "Live instance provisioning (Ubuntu 24.04 Cloud) with verified long-term infrastructure stability.",
-        "Advanced log analysis across microservices for precise inter-service debugging."
+        "Distributed 4-node cluster topology: 1 Controller, 2 Compute hosts, and 1 Dedicated Storage Node.",
+        "Configured OpenStack Cinder to provision and attach persistent block storage volumes to instances.",
+        "Software-Defined Networking (SDN) layer using Neutron with VXLAN encapsulation for tenant isolation.",
+        "Complete tenant environment routing with Private Networks, Routers, and Floating IPs.",
+        "Live instance provisioning (Ubuntu 24.04 Cloud) with attached volumes and verified long-term uptime stability."
       ],
       fr: [
-        "Ségrégation d'un cluster distribué à 3 nœuds (Routage des flux Management et Provider).",
-        "Couche de réseau SDN (Software-Defined Networking) via Neutron avec encapsulation VXLAN.",
-        "Environnement client complet : réseaux privés, routeurs virtuels et adresses IP flottantes.",
-        "Provisioning d'instances fonctionnelles (Ubuntu 24.04 Cloud) avec stabilité système vérifiée.",
-        "Analyse avancée des journaux applicatifs (logs) inter-services pour un débogage précis."
+        "Topologie distribuée à 4 nœuds : 1 Contrôleur, 2 hôtes Compute et 1 Nœud de Stockage dédié.",
+        "Configuration d'OpenStack Cinder pour le provisioning et l'attachement de volumes de stockage par blocs persistants.",
+        "Couche réseau SDN via Neutron avec encapsulation VXLAN pour une isolation stricte des clients.",
+        "Routage complet de l'environnement client avec réseaux privés, routeurs virtuels et IP flottantes.",
+        "Provisioning d'instances fonctionnelles (Ubuntu 24.04 Cloud) avec volumes rattachés et stabilité système vérifiée."
       ]
     },
-    repoUrl: "https://github.com/hamidbong/openstack-architecture-deployment.git",
-    // demoUrl: "", // Leave commented out or remove if you don't have a public live GUI dashboard link
-    imageUrl: "/projects/openstack-deployment/openstack_manuelle.png", // Path to your main project image or diagram
+   repoUrl: "https://github.com/hamidbong/openstack-architecture-deployment.git",
+    imageUrl: "/projects/openstack-deployment/openstack_manuelle.png", 
     images: [
       "/projects/openstack-deployment/openstack_manuelle.png","/projects/openstack-deployment/Openstack_dashboard_overview.png",
       "/projects/openstack-deployment/Instance_Openstack _dashbards.png", "/projects/openstack-deployment/Network_topology_Openstack.png", 
       "/projects/openstack-deployment/openstack_all_endpoints.png", "/projects/openstack-deployment/openstack_compute_service.png", 
-      "/projects/openstack-deployment/openstack-map-v20240401.png"       // Optional: Terminal CLI verification output screenshot
+      "/projects/openstack-deployment/openstack-map-v20240401.png", "/projects/openstack-deployment/openstack_cinder_service_list.png",
+      "/projects/openstack-deployment/volume_list.png"
     ],
-    featured: true // Set to true to highlight this major project on your homepage
+    featured: true 
   },
 
   {
