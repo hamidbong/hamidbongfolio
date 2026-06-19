@@ -132,7 +132,7 @@ const MOCK_PROJECTS: Project[] = [
   },
 
   {
-    id: 7,
+    id: 3,
     title: {
       en: "Distributed 4-Node OpenStack Cloud Infrastructure Deployment",
       fr: "Déploiement d'un Cloud Privé OpenStack sur Architecture à 4 Nœuds"
